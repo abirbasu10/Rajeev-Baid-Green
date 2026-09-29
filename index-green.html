@@ -1,0 +1,1466 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Rajeev Baid — Founder &amp; Chairman, Aman Tea Group</title>
+<meta name="description" content="Rajeev Baid — Founder & Chairman of the Aman Tea Group: Chai Chun, Okayti Estate and Aman Tea. Redefining the global tea experience from the gardens of Kishanganj to the cups of millions." />
+
+<!-- Motion gate: hide animated elements only when JS + motion are available (runs before first paint) -->
+<script>
+  (function () {
+    var d = document.documentElement;
+    if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) d.classList.add('anim');
+    // Safety net: if GSAP never arrives, reveal everything.
+    setTimeout(function () { if (!window.gsap) d.classList.remove('anim'); }, 3000);
+  })();
+</script>
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+<!-- Above-the-fold images: fetch early -->
+<link rel="preload" as="image" href="assets/hero/home-rajeevbaid-img.jpg" />
+<link rel="preload" as="image" href="assets/hero/tea-hills-golden.jpg" />
+
+<!-- Tailwind (prototype only — CDN build) -->
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          ink:   { DEFAULT: '#1c2b1e', deep: '#16241a', soft: '#24331f', black: '#111b14' },
+          moss:  '#3d4f34',
+          cream: { DEFAULT: '#f7f3ec', deep: '#eeeadc' },
+          // Accent reads CSS variables so light sections can deepen it for contrast
+          leaf:  { DEFAULT: 'rgb(var(--leaf-rgb) / <alpha-value>)', light: 'rgb(var(--leaf-light-rgb) / <alpha-value>)', dark: 'rgb(var(--leaf-dark-rgb) / <alpha-value>)' },
+          brew:  'rgb(var(--brew-rgb) / <alpha-value>)'
+        },
+        fontFamily: {
+          serif: ['"Cormorant Garamond"', 'Georgia', 'serif'],
+          sans:  ['Jost', 'system-ui', 'sans-serif']
+        },
+        maxWidth: { site: '1360px' }
+      }
+    }
+  };
+</script>
+
+<style>
+  /* ============================================================
+     TOKENS
+     ============================================================ */
+  :root {
+    --black: #111b14;          /* deepest tea green */
+    --ink: #1c2b1e;            /* forest */
+    --ink-deep: #16241a;
+    --moss: #3d4f34;           /* sage-moss secondary surface */
+    --cream: #f7f3ec;
+    --cream-deep: #eeeadc;
+    --leaf-rgb: 164 201 95;    /* new-leaf accent #a4c95f */
+    --leaf-light-rgb: 195 221 138;
+    --leaf-dark-rgb: 92 122 44;
+    --brew-rgb: 200 149 80;    /* brewed-tea amber #c89550 — the "finished cup" */
+    --leaf: rgb(var(--leaf-rgb));
+    --leaf-light: rgb(var(--leaf-light-rgb));
+    --leaf-pale: #e6f2cc;
+    --brew: rgb(var(--brew-rgb));
+    --ease: cubic-bezier(.22, .61, .36, 1);
+    --ease-out: cubic-bezier(.16, 1, .3, 1);
+    --gutter: max(2.5rem, calc((100vw - 1360px) / 2 + 2.5rem)); /* aligns bleed layouts with .max-w-site */
+  }
+
+  html { scroll-padding-top: 80px; }
+  body {
+    font-family: 'Jost', system-ui, sans-serif;
+    background: var(--ink-deep);
+    color: var(--cream);
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+  ::selection { background: var(--leaf); color: var(--black); }
+  :focus-visible { outline: 1px solid var(--leaf); outline-offset: 4px; }
+  img { display: block; }
+
+  /* ============================================================
+     TYPE
+     ============================================================ */
+  .font-display { font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 400; letter-spacing: -0.02em; }
+  .accent { font-style: italic; color: var(--leaf); }
+  .eyebrow {
+    font-size: .7rem; font-weight: 500; letter-spacing: .38em; text-transform: uppercase;
+    color: var(--leaf); display: inline-flex; align-items: center; gap: 1rem;
+  }
+  .eyebrow::before { content: ''; width: 2.5rem; height: 1px; background: currentColor; }
+  .eyebrow.center::after { content: ''; width: 2.5rem; height: 1px; background: currentColor; }
+
+  .mega  { font-size: clamp(3.4rem, 10.5vw, 12rem); line-height: .9; }
+  .hero-title { font-size: clamp(3.2rem, min(10vw, 15vh), 9.5rem); line-height: .92; }
+  .hero-name { display: block; font-size: .36em; line-height: 1; letter-spacing: .01em; margin-bottom: .22em; color: var(--cream); }
+  @media (max-width: 1023px) { .hero-name { font-size: .5em; } }
+  @media (min-width: 1024px) {
+    .hero-title { white-space: nowrap; }  /* keeps two lines; may overlap the portrait by design */
+    .hero-portrait-box { max-width: min(500px, calc((100svh - 260px) * .8)) !important; }
+  }
+  .giant { font-size: clamp(3rem, 8vw, 9rem); line-height: .92; }
+  .big   { font-size: clamp(2.4rem, 5.6vw, 6rem); line-height: .98; }
+
+  .outline-num {
+    font-family: 'Cormorant Garamond', serif; font-weight: 300; line-height: 1;
+    color: transparent; -webkit-text-stroke: 1px rgb(var(--leaf-rgb) / .55);
+  }
+
+  /* Leaf sheen — applied per word so it survives the word-split masks */
+  .sheen .wi, .sheen-static {
+    background: linear-gradient(105deg, var(--leaf) 0%, var(--leaf) 38%, var(--leaf-pale) 50%, var(--leaf) 62%, var(--leaf) 100%);
+    background-size: 300% 100%; background-position: 100% 0;
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+  }
+
+  /* Word-split masks */
+  .w  { display: inline-block; overflow: hidden; vertical-align: top; padding: 0 .06em .12em 0; margin: 0 -.06em -.12em 0; }
+  .wi { display: inline-block; will-change: transform; }
+
+  /* Bleed layouts: text column aligned to the site container while the image runs to the edge */
+  @media (min-width: 1024px) {
+    .pad-r-gutter { padding-right: var(--gutter) !important; }
+    .pad-l-gutter { padding-left: var(--gutter) !important; }
+  }
+
+  /* ============================================================
+     MOTION GATE — initial states (only when html.anim)
+     ============================================================ */
+  html.anim .hero-hide { visibility: hidden; }
+  html.anim [data-reveal] { opacity: 0; }
+  html.anim .draw-x { transform: scaleX(0); }
+
+  /* ============================================================
+     THEME SHIFT — with JS, sections go transparent and <body> colour animates
+     ============================================================ */
+  .sec[data-theme="dark"]   { background: var(--ink-deep);   color: var(--cream); }
+  .sec[data-theme="ink"]    { background: var(--ink);        color: var(--cream); }
+  .sec[data-theme="black"]  { background: var(--black);      color: var(--cream); }
+  .sec[data-theme="cream"]  { background: var(--cream);      color: var(--ink); }
+  .sec[data-theme="cream2"] { background: var(--cream-deep); color: var(--ink); }
+  .sec[data-theme="moss"]   { background: var(--moss);      color: var(--cream); }
+  /* On ivory, the fresh leaf is too light to read — deepen it (vars are re-resolved per section) */
+  .sec[data-theme^="cream"] {
+    --leaf-rgb: 104 138 48; --leaf-light-rgb: 132 166 70; --leaf-dark-rgb: 78 104 36;
+    --leaf: rgb(104 138 48); --leaf-light: rgb(132 166 70); --leaf-pale: #c7de9c;
+  }
+  html.theme-js .sec { background: transparent; }
+
+  .muted-d { color: rgba(247,243,236,.62); }
+  .muted-l { color: rgba(22,36,26,.64); }
+
+  /* ============================================================
+     LINKS / BUTTONS
+     ============================================================ */
+  .u-link { position: relative; display: inline-block; }
+  .u-link::after {
+    content: ''; position: absolute; left: 0; bottom: -5px; height: 1px; width: 100%;
+    background: var(--leaf); transform: scaleX(0); transform-origin: right;
+    transition: transform .55s var(--ease-out);
+  }
+  .u-link:hover::after, .u-link:focus-visible::after, .u-link.active::after { transform: scaleX(1); transform-origin: left; }
+
+  .btn {
+    position: relative; overflow: hidden; isolation: isolate;
+    display: inline-flex; align-items: center; justify-content: center; gap: .8rem;
+    padding: 1.15rem 2.3rem; border: 1px solid var(--leaf); color: var(--leaf);
+    font-size: .72rem; letter-spacing: .3em; text-transform: uppercase; font-weight: 500;
+    transition: color .5s var(--ease-out);
+  }
+  .btn::before {
+    content: ''; position: absolute; inset: 0; z-index: -1; background: var(--leaf);
+    transform: translateY(101%); transition: transform .55s var(--ease-out);
+  }
+  .btn:hover { color: var(--black); }
+  .btn:hover::before { transform: translateY(0); }
+  .btn.solid { background: var(--leaf); color: var(--black); }
+  .btn.solid::before { background: var(--black); }
+  .btn.solid:hover { color: var(--leaf); }
+
+  .more {
+    display: inline-flex; align-items: center; gap: .7rem;
+    font-size: .7rem; letter-spacing: .3em; text-transform: uppercase; font-weight: 500; color: var(--leaf);
+  }
+  .more svg { transition: transform .5s var(--ease-out); }
+  .more:hover svg, a:hover .more svg { transform: translateX(8px); }
+
+  .icon-btn {
+    width: 44px; height: 44px; border-radius: 999px; border: 1px solid currentColor;
+    display: inline-grid; place-items: center; position: relative; overflow: hidden; isolation: isolate;
+    transition: color .45s var(--ease-out), border-color .45s;
+  }
+  .icon-btn::before {
+    content: ''; position: absolute; inset: 0; border-radius: inherit; background: var(--leaf); z-index: -1;
+    transform: scale(0); transition: transform .45s var(--ease-out);
+  }
+  .icon-btn:hover { color: var(--black); border-color: var(--leaf); }
+  .icon-btn:hover::before { transform: scale(1); }
+  .icon-btn svg { transition: transform .45s var(--ease-out); }
+  .icon-btn:hover svg { transform: rotate(-10deg) scale(1.1); }
+
+  /* Image hover zoom */
+  .zoom { overflow: hidden; }
+  .zoom img { transition: transform 1.4s var(--ease-out); }
+  .zoom:hover img, a:hover .zoom img { transform: scale(1.07); }
+
+  /* ============================================================
+     CURSOR (desktop, fine pointer only — enabled by JS)
+     ============================================================ */
+  .cursor-dot, .cursor-ring { position: fixed; top: 0; left: 0; pointer-events: none; z-index: 9999; border-radius: 999px; display: none; }
+  html.has-cursor, html.has-cursor a, html.has-cursor button, html.has-cursor [data-cursor] { cursor: none; }
+  html.has-cursor input, html.has-cursor textarea { cursor: text; }
+  html.has-cursor .cursor-dot { display: block; }
+  html.has-cursor .cursor-ring { display: grid; place-items: center; }
+  .cursor-dot { width: 6px; height: 6px; margin: -3px 0 0 -3px; background: var(--leaf); transition: opacity .3s; }
+  .cursor-ring {
+    width: 40px; height: 40px; margin: -20px 0 0 -20px; border: 1px solid rgb(var(--leaf-light-rgb) / .7);
+    transition: width .45s var(--ease-out), height .45s var(--ease-out), margin .45s var(--ease-out), background-color .45s, border-color .45s;
+  }
+  .cursor-ring span { font-size: .6rem; letter-spacing: .25em; text-transform: uppercase; color: var(--black); opacity: 0; transition: opacity .3s; }
+  .cursor-ring.is-link  { width: 64px; height: 64px; margin: -32px 0 0 -32px; background: rgb(var(--leaf-rgb) / .12); border-color: var(--leaf); }
+  .cursor-ring.is-label { width: 96px; height: 96px; margin: -48px 0 0 -48px; background: var(--leaf); border-color: var(--leaf); }
+  .cursor-ring.is-label span { opacity: 1; }
+  .cursor-dot.hide { opacity: 0; }
+  html.has-cursor:not(.cursor-live) .cursor-dot, html.has-cursor:not(.cursor-live) .cursor-ring { opacity: 0; }
+
+  /* ============================================================
+     NAV — background/blur intensifies in two steps
+     ============================================================ */
+  #nav { transition: background-color .6s var(--ease), backdrop-filter .6s, border-color .6s; border-bottom: 1px solid transparent; }
+  #nav .nav-inner { transition: padding .6s var(--ease); }
+  #nav.scrolled { background: rgba(17,27,20,.5); backdrop-filter: blur(8px) saturate(1.2); -webkit-backdrop-filter: blur(8px) saturate(1.2); }
+  #nav.scrolled-deep { background: rgba(17,27,20,.88); backdrop-filter: blur(18px) saturate(1.4); -webkit-backdrop-filter: blur(18px) saturate(1.4); border-color: rgb(var(--leaf-rgb) / .2); }
+  #nav.scrolled .nav-inner { padding-top: .85rem; padding-bottom: .85rem; }
+  .nav-link { font-size: .72rem; letter-spacing: .24em; text-transform: uppercase; color: rgba(247,243,236,.85); transition: color .3s; }
+  .nav-link:hover, .nav-link.active { color: var(--leaf); }
+
+  .dropdown { opacity: 0; visibility: hidden; transform: translateY(10px); transition: all .4s var(--ease-out); }
+  .has-dropdown:hover .dropdown, .has-dropdown:focus-within .dropdown { opacity: 1; visibility: visible; transform: none; }
+
+  #mobileMenu { transition: clip-path .8s var(--ease-out), visibility .8s; clip-path: inset(0 0 100% 0); visibility: hidden; }
+  #mobileMenu.open { clip-path: inset(0 0 0 0); visibility: visible; }
+  #mobileMenu .m-item { transform: translateY(30px); opacity: 0; transition: all .7s var(--ease-out); }
+  #mobileMenu.open .m-item { transform: none; opacity: 1; }
+  .burger span { display: block; height: 1px; width: 28px; background: var(--cream); transition: transform .45s var(--ease-out), opacity .3s; }
+  .burger span + span { margin-top: 8px; }
+  .burger.open span:nth-child(1) { transform: translateY(9px) rotate(45deg); }
+  .burger.open span:nth-child(2) { opacity: 0; }
+  .burger.open span:nth-child(3) { transform: translateY(-9px) rotate(-45deg); }
+
+  /* ============================================================
+     HERO
+     ============================================================ */
+  #hero { min-height: 100svh; }
+  .hero-bg img { position: absolute; left: 0; top: -12%; width: 100%; height: 124%; object-fit: cover; opacity: .4; filter: hue-rotate(38deg) saturate(.85) blur(1px); }
+  .hero-bg::after {
+    content: ''; position: absolute; inset: 0;
+    background:
+      radial-gradient(60% 70% at 72% 45%, rgb(var(--leaf-rgb) / .22), transparent 70%),
+      linear-gradient(90deg, rgba(17,27,20,.97) 0%, rgba(17,27,20,.78) 45%, rgba(17,27,20,.35) 100%),
+      linear-gradient(0deg, var(--black) 0%, transparent 35%);
+  }
+  .ring { animation: spin 60s linear infinite; transform-origin: 100px 100px; }
+  .ring.rev { animation-duration: 90s; animation-direction: reverse; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  .portrait-frame img { width: 100%; height: 100%; object-fit: cover; object-position: 55% 18%; }
+  .portrait-frame::after { content: ''; position: absolute; inset: 0; background: linear-gradient(0deg, rgba(17,27,20,.55), transparent 40%); pointer-events: none; }
+  .scroll-cue { width: 1px; height: 64px; background: rgb(var(--leaf-rgb) / .35); position: relative; overflow: hidden; }
+  .scroll-cue::after { content: ''; position: absolute; left: 0; top: -40%; width: 1px; height: 40%; background: var(--leaf-light); animation: cue 2.2s var(--ease) infinite; }
+  @keyframes cue { to { top: 110%; } }
+  .underline-shimmer { height: 2px; background: linear-gradient(90deg, transparent, var(--leaf), var(--leaf-pale), var(--leaf), transparent); background-size: 200% 100%; animation: shimmer 3.5s linear infinite; transform-origin: left; }
+  @keyframes shimmer { from { background-position: 200% 0; } to { background-position: -200% 0; } }
+
+  /* ============================================================
+     STATS — the "major highlight"
+     ============================================================ */
+  .stat-num { font-family: 'Cormorant Garamond', serif; font-weight: 300; line-height: .85; font-size: clamp(5rem, 15vw, 15rem); letter-spacing: -0.04em; font-variant-numeric: lining-nums tabular-nums; }
+  .stat-num .sfx { color: var(--leaf); font-style: italic; font-size: .55em; margin-left: .04em; }
+  .stat-num .pre { color: var(--leaf); font-family: 'Jost', sans-serif; font-size: .1em; letter-spacing: .3em; text-transform: uppercase; vertical-align: top; margin-right: .6em; }
+
+  /* ============================================================
+     PORTFOLIO / VENTURES
+     ============================================================ */
+  .clip-img { overflow: hidden; }
+  .clip-img img { width: 100%; height: 100%; object-fit: cover; }
+  .venture-card { transition: transform .7s var(--ease-out), box-shadow .7s var(--ease-out), background-color .5s; }
+  .venture-card:hover { transform: translateY(-10px); box-shadow: 0 30px 60px -30px rgba(22,36,26,.35); background: #fff; }
+  .venture-card:hover .v-num { color: var(--leaf); }
+
+  /* ============================================================
+     MARQUEE
+     ============================================================ */
+  .marquee { overflow: hidden; -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); }
+  .marquee-track { display: flex; width: max-content; gap: 1.25rem; padding: 8px 0; animation: marquee var(--dur, 45s) linear infinite; }
+  .marquee-track > * { margin-right: 0; }
+  .marquee.reverse .marquee-track { animation-direction: reverse; }
+  .marquee:hover .marquee-track { animation-play-state: paused; }
+  @keyframes marquee { to { transform: translateX(calc(-50% - .625rem)); } }
+  .logo-tile { flex: 0 0 auto; width: 220px; height: 130px; background: var(--cream); display: grid; place-items: center; padding: 1.1rem 1.4rem; transition: transform .5s var(--ease-out), background-color .5s; }
+  .logo-tile:hover { transform: translateY(-6px) scale(1.04); background: #fff; }
+  .logo-tile img { max-width: 100%; max-height: 100%; object-fit: contain; }
+  .logo-tile.sm { width: 180px; height: 96px; }
+
+  /* ============================================================
+     PRESS
+     ============================================================ */
+  .press-track { scroll-snap-type: x mandatory; scrollbar-width: none; }
+  .press-track::-webkit-scrollbar { display: none; }
+  .press-track.dragging { scroll-snap-type: none; }
+  .press-track.dragging * { pointer-events: none; }
+  .press-card { scroll-snap-align: start; transition: transform .6s var(--ease-out), border-color .5s, box-shadow .6s var(--ease-out); }
+  .press-card:hover { transform: scale(1.03); border-color: var(--leaf); box-shadow: 0 30px 60px -35px rgba(22,36,26,.45); }
+  .press-card:hover h3 { color: rgb(var(--leaf-dark-rgb)); }
+  @media (min-width: 1360px) { #pressTrack { padding-left: var(--gutter); scroll-padding-left: var(--gutter); } }
+
+  /* ============================================================
+     STORY — slow drifting light
+     ============================================================ */
+  .blob { position: absolute; border-radius: 999px; filter: blur(80px); opacity: .35; animation: drift 22s ease-in-out infinite alternate; }
+  .blob.b2 { animation-duration: 28s; animation-delay: -8s; }
+  @keyframes drift { 0% { transform: translate(0,0) scale(1); } 50% { transform: translate(8vw,-6vh) scale(1.2); } 100% { transform: translate(-6vw,5vh) scale(.9); } }
+
+  /* ============================================================
+     FORM
+     ============================================================ */
+  .field { width: 100%; background: transparent; border: 0; border-bottom: 1px solid rgba(22,36,26,.25); padding: .9rem 0; font-size: 1.05rem; color: var(--ink); border-radius: 0; transition: border-color .3s; }
+  .field:focus { outline: none; border-color: var(--leaf); }
+  .field::placeholder { color: rgba(22,36,26,.38); }
+  .field-label { font-size: .64rem; letter-spacing: .28em; text-transform: uppercase; color: rgba(22,36,26,.55); }
+
+
+  /* ============================================================
+     TEA-LEAF MOTIF
+     ============================================================ */
+  .accent.brew { color: var(--brew); }
+  .sheen.brew .wi {
+    background: linear-gradient(105deg, var(--brew) 0%, var(--brew) 38%, #f6dfb8 50%, var(--brew) 62%, var(--brew) 100%);
+    background-size: 300% 100%; background-position: 100% 0;
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+  }
+
+  /* 1 · the ONE travelling leaf — fixed, so it can cross section boundaries freely */
+  #travelingLeaf { position: fixed; left: 0; top: 0; width: 22px; height: 38px; z-index: 40; pointer-events: none;
+                   visibility: hidden; color: #8fae52; will-change: transform;
+                   filter: drop-shadow(0 3px 5px rgba(0,0,0,.28)); }
+  #travelingLeaf svg { display: block; width: 100%; height: 100%; }
+  /* plain scroll-progress bar */
+  #scrollBar { position: fixed; top: 0; left: 0; right: 0; height: 2px; z-index: 60; transform-origin: 0 50%; transform: scaleX(0);
+               background: var(--leaf); }
+
+  /* 2 · hero leaf + falling leaves */
+  #heroLeaf { overflow: visible; }
+  .hl-stroke { fill: none; stroke: rgb(var(--leaf-rgb) / .85); stroke-width: .45; stroke-linecap: round; }
+  .hl-vein   { fill: none; stroke: rgb(var(--leaf-rgb) / .5);  stroke-width: .32; stroke-linecap: round; }
+  #leafFall, #steamLeaves { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
+  #steamLeaves { filter: blur(2px); }
+
+  /* 3 · vein rules */
+  .vein-rule { display: block; width: 100%; height: 26px; }
+  .vein-rule svg { display: block; overflow: visible; }
+
+  /* 5 · venture leaf bullets */
+  .leaf-bullet { width: 10px; height: 18px; color: var(--leaf); transform: rotate(-24deg); transition: transform .6s var(--ease-out); }
+  .venture-card:hover .leaf-bullet { transform: rotate(12deg) scale(1.3); }
+
+  /* 6 · marquee leaf separators */
+  .m-leaf { flex: 0 0 auto; align-self: center; width: 14px; height: 24px; color: var(--leaf); opacity: .85; transform: rotate(35deg); }
+  .m-leaf svg { width: 100%; height: 100%; }
+
+  /* 8 · press card corner leaf */
+  .press-leaf { position: absolute; top: 14px; right: 14px; z-index: 2; width: 20px; height: 35px; color: var(--leaf-pale);
+                opacity: 0; transform: translate(10px, -10px) rotate(-70deg) scale(.4);
+                transition: opacity .5s var(--ease-out), transform .7s var(--ease-out);
+                filter: drop-shadow(0 2px 6px rgba(0,0,0,.45)); }
+  .press-card:hover .press-leaf { opacity: 1; transform: rotate(-18deg); }
+
+  /* 9 · leaf → cup */
+  #cupStage .stage-leaf { color: var(--leaf); opacity: 0; }
+  #cupStage .stage-cup  { color: var(--brew); }
+  html.anim #cupStage .stage-cup { opacity: 0; }
+
+  /* ============================================================
+     REDUCED MOTION — static fallback
+     ============================================================ */
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation: none !important; transition-duration: .01ms !important; }
+    .marquee { -webkit-mask-image: none; mask-image: none; overflow-x: auto; }
+    .venture-card:hover, .press-card:hover, .logo-tile:hover { transform: none; }
+    .zoom:hover img, a:hover .zoom img { transform: none; }
+    #leafFall, #steamLeaves, #travelingLeaf { display: none !important; }
+    .press-card:hover .press-leaf { transform: rotate(-18deg); }
+  }
+</style>
+</head>
+
+<body>
+
+<!-- Tea-leaf sprite + leaf clip mask (shared by every leaf on the page) -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <symbol id="leaf-glyph" viewBox="0 0 100 176">
+      <path d="M52 3 C76 26 91 63 84 103 C79 129 65 147 50 158 C35 146 21 128 16 101 C10 60 28 25 52 3 Z" fill="currentColor"/>
+      <path d="M51 12 C52 60 51 110 50 156" fill="none" stroke="rgba(0,0,0,.22)" stroke-width="3" stroke-linecap="round"/>
+      <path d="M50 157 C50 164 47 170 42 174" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round"/>
+    </symbol>
+    <linearGradient id="leafGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#a4c95f" stop-opacity=".30"/>
+      <stop offset="1" stop-color="#3d4f34" stop-opacity=".04"/>
+    </linearGradient>
+    <clipPath id="leafClip" clipPathUnits="objectBoundingBox">
+      <path id="leafClipPath" d="M0.5200 0.0064 C0.7600 0.1529 0.9100 0.3885 0.8400 0.6433 C0.7900 0.8089 0.6500 0.9236 0.5000 0.9936 C0.3500 0.9172 0.2100 0.8025 0.1600 0.6306 C0.1000 0.3694 0.2800 0.1465 0.5200 0.0064 Z" transform="translate(.5 .5) scale(0) translate(-.5 -.5)"/>
+    </clipPath>
+  </defs>
+</svg>
+
+<!-- 1 · The one travelling leaf: hero portrait → Kishanganj → Chai Chun → marquee → philosophy quote → press card → cup -->
+<div id="travelingLeaf" aria-hidden="true"><svg viewBox="0 0 100 176"><use href="#leaf-glyph"/></svg></div>
+<div id="scrollBar" aria-hidden="true"></div>
+
+<!-- Custom cursor (desktop only) -->
+<div class="cursor-ring" aria-hidden="true"><span>View</span></div>
+<div class="cursor-dot" aria-hidden="true"></div>
+
+<!-- ================================================================
+     1. NAV
+     ================================================================ -->
+<header id="nav" class="fixed top-0 inset-x-0 z-50">
+  <div class="nav-inner max-w-site mx-auto px-5 md:px-10 py-6 flex items-center justify-between gap-6">
+    <a href="#top" id="logo" class="font-display text-[1.7rem] md:text-3xl leading-none text-cream magnetic hero-hide">
+      Rajeev <span class="accent sheen-static" id="logoSheen">Baid</span>
+    </a>
+
+    <nav class="hidden lg:flex items-center gap-9" aria-label="Primary" id="primaryNav">
+      <a href="#journey"    class="nav-link u-link magnetic hero-hide">Journey</a>
+      <a href="#portfolio"  class="nav-link u-link magnetic hero-hide">Portfolio</a>
+      <a href="#philosophy" class="nav-link u-link magnetic hero-hide">Philosophy</a>
+      <a href="#press"      class="nav-link u-link magnetic hero-hide">Press</a>
+      <a href="#contact"    class="nav-link u-link magnetic hero-hide">Contact</a>
+      <!-- Placeholder templates — built in later prompts -->
+      <div class="relative has-dropdown hero-hide" id="moreMenu">
+        <button class="nav-link flex items-center gap-2" aria-haspopup="true">
+          More <svg width="9" height="6" viewBox="0 0 9 6" fill="none"><path d="M1 1l3.5 3.5L8 1" stroke="currentColor"/></svg>
+        </button>
+        <div class="dropdown absolute right-0 top-full pt-5">
+          <ul class="bg-ink-black border border-leaf/25 min-w-[230px] py-3">
+            <li><a href="#" data-placeholder="blog.html"           class="block px-6 py-2.5 text-sm text-cream/75 hover:text-leaf hover:pl-8 transition-all">Blog</a></li>
+            <li><a href="#" data-placeholder="podcast.html"        class="block px-6 py-2.5 text-sm text-cream/75 hover:text-leaf hover:pl-8 transition-all">Podcast</a></li>
+            <li><a href="#" data-placeholder="youtube.html"        class="block px-6 py-2.5 text-sm text-cream/75 hover:text-leaf hover:pl-8 transition-all">YouTube</a></li>
+            <li><a href="#" data-placeholder="gallery.html"        class="block px-6 py-2.5 text-sm text-cream/75 hover:text-leaf hover:pl-8 transition-all">Photo Gallery</a></li>
+            <li><a href="#" data-placeholder="ai-agent.html"       class="block px-6 py-2.5 text-sm text-cream/75 hover:text-leaf hover:pl-8 transition-all">AI Agent</a></li>
+            <li><a href="#" data-placeholder="achievements.html"   class="block px-6 py-2.5 text-sm text-cream/75 hover:text-leaf hover:pl-8 transition-all">Achievements</a></li>
+            <li><a href="#" data-placeholder="paper-articles.html" class="block px-6 py-2.5 text-sm text-cream/75 hover:text-leaf hover:pl-8 transition-all">Paper Article</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div class="flex items-center gap-4">
+      <a href="https://wa.me/919851001111" target="_blank" rel="noopener" aria-label="Chat on WhatsApp" class="icon-btn text-leaf magnetic hero-hide" id="waBtn">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.1-1.8-.9-2-1s-.5-.1-.7.1-.8 1-1 1.2-.4.2-.7.1a8.2 8.2 0 0 1-4-3.5c-.3-.5.3-.5.9-1.6.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6a1.1 1.1 0 0 0-.8.4 3.4 3.4 0 0 0-1 2.5 5.9 5.9 0 0 0 1.2 3.1 13.5 13.5 0 0 0 5.2 4.6c1.9.8 2.7.9 3.6.7a3.1 3.1 0 0 0 2-1.4 2.5 2.5 0 0 0 .2-1.4c-.1-.1-.3-.2-.6-.3zM12 21.8a9.8 9.8 0 0 1-5-1.4l-.4-.2-3.7 1 1-3.6-.2-.4a9.8 9.8 0 1 1 8.3 4.6zm8.4-18.2A11.8 11.8 0 0 0 1.8 17.8L.1 24l6.3-1.7a11.8 11.8 0 0 0 5.6 1.4 11.9 11.9 0 0 0 8.4-20.1z"/></svg>
+      </a>
+      <button id="burger" class="burger lg:hidden p-2" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- Mobile menu -->
+<div id="mobileMenu" class="fixed inset-0 z-40 bg-ink-black lg:hidden overflow-y-auto" aria-hidden="true">
+  <div class="min-h-full px-6 pt-28 pb-12 flex flex-col">
+    <p class="eyebrow m-item">Menu</p>
+    <nav class="mt-8 flex flex-col gap-3" aria-label="Mobile">
+      <a href="#journey"    class="m-item font-display text-5xl text-cream" style="transition-delay:.08s">Journey</a>
+      <a href="#portfolio"  class="m-item font-display text-5xl text-cream" style="transition-delay:.13s">Portfolio</a>
+      <a href="#philosophy" class="m-item font-display text-5xl text-cream" style="transition-delay:.18s">Philosophy</a>
+      <a href="#press"      class="m-item font-display text-5xl text-cream" style="transition-delay:.23s">Press</a>
+      <a href="#contact"    class="m-item font-display text-5xl text-cream" style="transition-delay:.28s">Contact</a>
+    </nav>
+    <div class="h-px bg-leaf/40 my-10 m-item" style="transition-delay:.33s"></div>
+    <div class="grid grid-cols-2 gap-y-3 gap-x-6 text-sm tracking-[.18em] uppercase text-cream/60 m-item" style="transition-delay:.38s">
+      <a href="#" data-placeholder="blog.html">Blog</a>
+      <a href="#" data-placeholder="podcast.html">Podcast</a>
+      <a href="#" data-placeholder="youtube.html">YouTube</a>
+      <a href="#" data-placeholder="gallery.html">Photo Gallery</a>
+      <a href="#" data-placeholder="ai-agent.html">AI Agent</a>
+      <a href="#" data-placeholder="achievements.html">Achievements</a>
+      <a href="#" data-placeholder="paper-articles.html">Paper Article</a>
+    </div>
+    <p class="mt-auto pt-12 text-cream/40 text-sm m-item" style="transition-delay:.43s">rajeev@chaichun.in · +91 98510 01111</p>
+  </div>
+</div>
+
+<main id="top">
+
+<!-- ================================================================
+     2. HERO
+     ================================================================ -->
+<section id="hero" class="sec relative flex items-center overflow-hidden" data-theme="black">
+  <div class="hero-bg absolute inset-0 overflow-hidden" aria-hidden="true">
+    <img src="assets/hero/tea-hills-golden.jpg" alt="" id="heroBgImg" fetchpriority="high" />
+  </div>
+  <canvas id="leafFall" aria-hidden="true"></canvas>
+
+  <div class="relative z-10 w-full max-w-site mx-auto px-5 md:px-10 pt-32 pb-24 lg:pt-32 lg:pb-24 grid lg:grid-cols-12 gap-10 lg:gap-14 items-center lg:min-h-[100svh]">
+    <!-- Copy -->
+    <div class="lg:col-span-7 relative z-20 order-2 lg:order-1" id="heroCopy">
+      <p class="eyebrow hero-hide" id="heroEyebrow">Founder &amp; Chairman</p>
+      <h1 class="font-display hero-title mt-8 hero-hide" id="heroTitle">
+        <span class="hero-name">Rajeev Baid</span>
+        Crafting the<br /><span class="accent sheen">Spirit of Tea</span>
+      </h1>
+      <div class="underline-shimmer w-2/3 max-w-md mt-8 hero-hide" id="heroLine"></div>
+      <p class="mt-8 max-w-xl text-lg md:text-xl leading-relaxed muted-d font-light hero-hide" id="heroSub">
+        Redefining the global tea experience — from the gardens of Kishanganj to the cups of millions.
+      </p>
+      <div class="mt-12 flex flex-wrap items-center gap-8 hero-hide" id="heroCtas">
+        <a href="#journey" class="btn magnetic">Discover the Journey</a>
+        <a href="#portfolio" class="more u-link magnetic">The Portfolio
+          <svg width="22" height="10" viewBox="0 0 22 10" fill="none"><path d="M0 5h20M16 1l4 4-4 4" stroke="currentColor"/></svg></a>
+      </div>
+    </div>
+
+    <!-- Portrait (parallax) with an unfurling tea leaf behind it -->
+    <div class="lg:col-span-5 order-1 lg:order-2 relative" id="heroPortraitWrap">
+      <div class="relative mx-auto w-[58%] sm:w-[50%] lg:w-full max-w-[520px] hero-portrait-box">
+        <svg class="absolute -left-[40%] -top-[16%] w-[80%] h-[140%] pointer-events-none hero-hide" id="heroLeaf" viewBox="0 0 100 176" aria-hidden="true">
+          <g id="heroLeafG">
+            <path class="leaf-fill" d="M52 3 C76 26 91 63 84 103 C79 129 65 147 50 158 C35 146 21 128 16 101 C10 60 28 25 52 3 Z" fill="url(#leafGrad)"/>
+            <path class="draw hl-stroke" d="M52 3 C76 26 91 63 84 103 C79 129 65 147 50 158 C35 146 21 128 16 101 C10 60 28 25 52 3 Z"/>
+            <path class="draw hl-stroke" d="M51 8 C52 60 51 110 50 158 C50 165 47 171 41 175"/>
+            <path class="draw hl-vein" d="M50.5 36 Q 60.0 32 70 22"/><path class="draw hl-vein" d="M50.5 36 Q 41.0 32 32 22"/><path class="draw hl-vein" d="M50.5 58 Q 65.0 54 80 40"/><path class="draw hl-vein" d="M50.5 58 Q 36.0 54 22 40"/><path class="draw hl-vein" d="M50.5 82 Q 67.0 78 84 64"/><path class="draw hl-vein" d="M50.5 82 Q 33.5 78 17 64"/><path class="draw hl-vein" d="M50.5 106 Q 66.0 102 82 90"/><path class="draw hl-vein" d="M50.5 106 Q 34.0 102 18 90"/><path class="draw hl-vein" d="M50.5 130 Q 62.0 126 74 116"/><path class="draw hl-vein" d="M50.5 130 Q 38.0 126 26 116"/>
+          </g>
+        </svg>
+        <div class="portrait-frame relative aspect-[4/5] overflow-hidden hero-hide" id="heroPortrait" data-cursor="view">
+          <img src="assets/hero/home-rajeevbaid-img.jpg" alt="Rajeev Baid, Founder &amp; Chairman of the Aman Tea Group" id="heroPortraitImg" fetchpriority="high" />
+        </div>
+        <p class="hidden lg:block absolute -bottom-9 right-0 text-[.62rem] tracking-[.32em] uppercase text-cream/45 hero-hide" id="heroCaption">Aman Tea Group · Chai Chun · Okayti</p>
+      </div>
+    </div>
+  </div>
+
+  <a href="#journey" class="hidden md:flex absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex-col items-center gap-3 hero-hide" id="scrollCue" aria-label="Scroll to the journey">
+    <span class="text-[.6rem] tracking-[.4em] uppercase text-cream/50">Scroll</span>
+    <span class="scroll-cue"></span>
+  </a>
+</section>
+
+<!-- ================================================================
+     3. THE JOURNEY
+     ================================================================ -->
+<section id="journey" class="sec relative py-28 md:py-44" data-theme="cream">
+  <div class="max-w-site mx-auto px-5 md:px-10">
+    <p class="eyebrow" data-reveal>The Journey</p>
+    <p class="font-display big mt-10 text-ink" data-scrub-words>
+      From a tea vendor at the railway platforms of <span class="accent">Kishanganj, Bihar</span> — to stewarding heritage estates and modern lifestyle brands across India.
+    </p>
+
+    <div class="grid md:grid-cols-12 gap-12 md:gap-16 mt-20 md:mt-28 items-end">
+      <div class="md:col-span-5 clip-img zoom aspect-[4/5]" data-clip="up" data-cursor="view">
+        <img src="assets/hero/rajeev-portrait-gold.jpg" alt="Rajeev Baid holding a cup of Okayti tea" loading="lazy" style="object-position: 50% 25%" />
+      </div>
+      <div class="md:col-span-6 md:col-start-7">
+        <p class="font-display italic text-3xl md:text-5xl leading-tight text-leaf-dark" data-split>
+          The journey has never lost its humility, nor its hunger.
+        </p>
+        <div class="vein-rule text-leaf/70 my-8" data-vein></div>
+        <div class="grid sm:grid-cols-2 gap-8 text-[1.04rem] leading-relaxed muted-l font-light" data-reveal>
+          <p>My early days were as a tea vendor, however, the keen observer within me felt the connection of tea with people and how it dramatically changed their day or mood. I was determined to learn more about tea and strengthen this connection.</p>
+          <p>The journey in the tea industry — of becoming an entrepreneur, of launching a distinguishable difference in the culture of tea-drinking — is filled with a bold and courageous risk appetite.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================
+     3b. BY THE NUMBERS — the page's major highlight
+     ================================================================ -->
+<section id="numbers" class="sec relative py-28 md:py-40 overflow-hidden" data-theme="black">
+  <div class="max-w-site mx-auto px-5 md:px-10">
+    <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
+      <p class="eyebrow" data-reveal>By the Numbers</p>
+      <p class="font-display italic text-2xl md:text-3xl text-cream/70 max-w-md md:text-right" data-reveal>Scale, earned one cup at a time.</p>
+    </div>
+    <div class="vein-rule text-leaf/70 mt-8" data-vein></div>
+
+    <dl class="grid md:grid-cols-2">
+      <div class="stat py-12 md:py-16 md:pr-12 border-b border-leaf/20 md:border-r">
+        <dd class="stat-num"><span data-count="25" data-from="0">25</span><span class="sfx">k+</span></dd>
+        <dt class="mt-5 text-[.7rem] tracking-[.32em] uppercase text-cream/60">Tea Planters Impacted</dt>
+      </div>
+      <div class="stat py-12 md:py-16 md:pl-12 border-b border-leaf/20">
+        <dd class="stat-num"><span data-count="180" data-from="0">180</span></dd>
+        <dt class="mt-5 text-[.7rem] tracking-[.32em] uppercase text-cream/60">Retail Touchpoints</dt>
+      </div>
+      <div class="stat py-12 md:py-16 md:pr-12 border-b md:border-b-0 border-leaf/20 md:border-r">
+        <dd class="stat-num"><span data-count="13" data-from="0">13</span></dd>
+        <dt class="mt-5 text-[.7rem] tracking-[.32em] uppercase text-cream/60">Manufacturing Units</dt>
+      </div>
+      <div class="stat py-12 md:py-16 md:pl-12">
+        <dd class="stat-num"><span class="pre">Since</span><span data-count="1888" data-from="1700">1888</span></dd>
+        <dt class="mt-5 text-[.7rem] tracking-[.32em] uppercase text-cream/60">Okayti Heritage</dt>
+      </div>
+    </dl>
+  </div>
+</section>
+
+<!-- ================================================================
+     4. THE PORTFOLIO
+     ================================================================ -->
+<section id="portfolio" class="sec relative py-28 md:py-44 overflow-hidden" data-theme="dark">
+  <div class="max-w-site mx-auto px-5 md:px-10">
+    <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8 mb-20 md:mb-32">
+      <div>
+        <p class="eyebrow" data-reveal>The Portfolio</p>
+        <h2 class="font-display giant mt-8" data-split>Three houses,<br /><span class="accent sheen">one devotion</span></h2>
+      </div>
+      <p class="max-w-sm muted-d font-light leading-relaxed text-lg" data-reveal>Aman Tea Group is a pure amalgamation of ideas and products that enrich the experience of tea from harvest to cup — in myriad ways.</p>
+    </div>
+  </div>
+
+  <!-- Brand rows: the image bleeds to the viewport edge -->
+  <div class="space-y-28 md:space-y-44">
+    <article class="grid lg:grid-cols-12 gap-10 lg:gap-0 items-center">
+      <div class="lg:col-span-7 clip-img zoom aspect-[4/3] lg:aspect-[16/11]" data-clip="left" data-cursor="view">
+        <img src="assets/misc/teacup-silk.jpg" alt="A cup of golden tea on ivory silk" loading="lazy" />
+      </div>
+      <div class="lg:col-span-5 px-5 md:px-10 lg:pl-16 pad-r-gutter relative">
+        <span class="outline-num block text-[5.5rem] lg:text-[8.5rem] -mb-4 lg:-mb-8 pointer-events-none" aria-hidden="true" data-reveal>01</span>
+        <h3 class="font-display giant relative" data-split>Chai <span class="accent">Chun</span></h3>
+        <span class="inline-grid place-items-center bg-cream px-4 py-2.5 mt-8" data-reveal><img src="assets/logos/loco-chai-chun.png" alt="Chai Chun logo" class="h-9 w-auto" loading="lazy" /></span>
+        <div class="h-px w-20 bg-leaf my-8 draw-x origin-left"></div>
+        <p class="text-lg md:text-xl leading-relaxed muted-d font-light max-w-md" data-reveal>India's premier tea boutique destination, curating the finest single-origin harvests for the modern connoisseur.</p>
+        <div class="mt-10" data-reveal><a href="https://www.chaichuntea.com/" target="_blank" rel="noopener" class="more u-link magnetic">Visit Chai Chun <svg width="22" height="10" viewBox="0 0 22 10" fill="none"><path d="M0 5h20M16 1l4 4-4 4" stroke="currentColor"/></svg></a></div>
+      </div>
+    </article>
+
+    <article class="grid lg:grid-cols-12 gap-10 lg:gap-0 items-center">
+      <div class="lg:col-span-7 lg:order-2 clip-img zoom aspect-[4/3] lg:aspect-[16/11]" data-clip="leaf" data-cursor="view">
+        <img src="assets/hero/tea-hills-golden.jpg" alt="Tea hills at golden hour" loading="lazy" />
+      </div>
+      <div class="lg:col-span-5 lg:order-1 px-5 md:px-10 lg:pr-16 pad-l-gutter relative">
+        <span class="outline-num block text-[5.5rem] lg:text-[8.5rem] -mb-4 lg:-mb-8 pointer-events-none" aria-hidden="true" data-reveal>02</span>
+        <h3 class="font-display giant relative" data-split>Okayti <span class="accent">Estate</span></h3>
+        <span class="inline-grid place-items-center bg-cream px-4 py-2.5 mt-8" data-reveal><img src="assets/logos/logo-okayti.png" alt="Okayti logo" class="h-12 w-auto" loading="lazy" /></span>
+        <div class="h-px w-20 bg-leaf my-8 draw-x origin-left"></div>
+        <p class="text-lg md:text-xl leading-relaxed muted-d font-light max-w-md" data-reveal>A legacy Darjeeling garden producing some of the world's most sought-after teas since 1888.</p>
+        <div class="mt-10" data-reveal><a href="https://www.okaytitea.com/" target="_blank" rel="noopener" class="more u-link magnetic">Explore Okayti <svg width="22" height="10" viewBox="0 0 22 10" fill="none"><path d="M0 5h20M16 1l4 4-4 4" stroke="currentColor"/></svg></a></div>
+      </div>
+    </article>
+
+    <article class="grid lg:grid-cols-12 gap-10 lg:gap-0 items-center">
+      <div class="lg:col-span-7 clip-img zoom aspect-[4/3] lg:aspect-[16/11]" data-clip="left" data-cursor="view">
+        <img src="assets/misc/tea-leaf-pouch.jpg" alt="Loose black tea spilling from a paper pouch" loading="lazy" />
+      </div>
+      <div class="lg:col-span-5 px-5 md:px-10 lg:pl-16 pad-r-gutter relative">
+        <span class="outline-num block text-[5.5rem] lg:text-[8.5rem] -mb-4 lg:-mb-8 pointer-events-none" aria-hidden="true" data-reveal>03</span>
+        <h3 class="font-display giant relative" data-split>Aman <span class="accent">Tea</span></h3>
+        <span class="inline-grid place-items-center bg-cream px-4 py-2.5 mt-8" data-reveal><img src="assets/logos/aman-tea-logo.png" alt="Aman Tea logo" class="h-10 w-auto" loading="lazy" /></span>
+        <div class="h-px w-20 bg-leaf my-8 draw-x origin-left"></div>
+        <p class="text-lg md:text-xl leading-relaxed muted-d font-light max-w-md" data-reveal>Industrial-scale excellence, supplying consistent premium quality to the global tea market.</p>
+        <div class="mt-10" data-reveal><a href="#units" class="more u-link magnetic">Thirteen units <svg width="22" height="10" viewBox="0 0 22 10" fill="none"><path d="M0 5h20M16 1l4 4-4 4" stroke="currentColor"/></svg></a></div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- ================================================================
+     5. CHOOSE YOUR ADVENTURE — VENTURES
+     ================================================================ -->
+<section id="ventures" class="sec relative py-28 md:py-44" data-theme="cream2">
+  <div class="max-w-site mx-auto px-5 md:px-10">
+    <div class="grid lg:grid-cols-12 gap-12 items-end mb-20 md:mb-28">
+      <div class="lg:col-span-6">
+        <p class="eyebrow" data-reveal>Choose Your Adventure</p>
+        <h2 class="font-display giant mt-8 text-ink" data-split>Every venture, <span class="accent sheen">a doorway</span></h2>
+        <p class="mt-8 max-w-md muted-l font-light leading-relaxed text-lg" data-reveal>Beyond the brands, three ways to step inside the world of tea — walk a heritage Darjeeling estate, learn the leaf from its masters, or take a seat in a café built on the railways where the journey began.</p>
+      </div>
+      <div class="lg:col-span-6 clip-img zoom" data-clip="up" data-cursor="view">
+        <img src="assets/ventures/exprience-img.jpg" alt="Collage of the group's ventures — Chai Gyan, Tea on Wheels, Chai Rasa and Okayti" class="w-full h-auto" loading="lazy" />
+      </div>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-6" id="ventureGrid">
+      <a href="https://www.okaytitea.com/" target="_blank" rel="noopener" class="venture-card bg-cream flex flex-col" data-card>
+        <div class="zoom aspect-[4/3]"><img src="assets/hero/tea-hills-golden.jpg" alt="Tea hills at golden hour" class="w-full h-full object-cover" loading="lazy" /></div>
+        <div class="p-8 flex flex-col flex-1">
+          <span class="v-num font-display text-xl text-ink/30 transition-colors inline-flex items-center gap-2.5"><svg class="leaf-bullet" viewBox="0 0 100 176" aria-hidden="true"><use href="#leaf-glyph"/></svg>01</span>
+          <h3 class="font-display text-3xl md:text-[2.3rem] mt-4 text-ink">Okayti Tea Tour</h3>
+          <p class="mt-4 muted-l font-light leading-relaxed flex-1">Walk the slopes of an 1888 Darjeeling estate and taste the harvest at its source, guided through Okayti’s working tea garden.</p>
+          <span class="more mt-8">Learn more <svg width="22" height="10" viewBox="0 0 22 10" fill="none"><path d="M0 5h20M16 1l4 4-4 4" stroke="currentColor"/></svg></span>
+        </div>
+      </a>
+      <a href="#" class="venture-card bg-cream flex flex-col" data-card>
+        <div class="zoom aspect-[4/3]"><img src="assets/gallery/pic123.jpg" alt="A Chai Gyan tea tasting session" class="w-full h-full object-cover" loading="lazy" /></div>
+        <div class="p-8 flex flex-col flex-1">
+          <span class="v-num font-display text-xl text-ink/30 transition-colors inline-flex items-center gap-2.5"><svg class="leaf-bullet" viewBox="0 0 100 176" aria-hidden="true"><use href="#leaf-glyph"/></svg>02</span>
+          <h3 class="font-display text-3xl md:text-[2.3rem] mt-4 text-ink">Chai Gyan</h3>
+          <p class="mt-4 muted-l font-light leading-relaxed flex-1">A dedicated initiative to deepen understanding of tea culture, varieties, health benefits and brewing — because tea is a tradition that connects people across the globe.</p>
+          <span class="more mt-8">Learn more <svg width="22" height="10" viewBox="0 0 22 10" fill="none"><path d="M0 5h20M16 1l4 4-4 4" stroke="currentColor"/></svg></span>
+        </div>
+      </a>
+      <a href="#" class="venture-card bg-cream flex flex-col" data-card>
+        <div class="zoom aspect-[4/3]"><img src="assets/gallery/pic119.jpg" alt="Tea on Wheels — a tea café in a railway carriage" class="w-full h-full object-cover" loading="lazy" /></div>
+        <div class="p-8 flex flex-col flex-1">
+          <span class="v-num font-display text-xl text-ink/30 transition-colors inline-flex items-center gap-2.5"><svg class="leaf-bullet" viewBox="0 0 100 176" aria-hidden="true"><use href="#leaf-glyph"/></svg>03</span>
+          <h3 class="font-display text-3xl md:text-[2.3rem] mt-4 text-ink">Tea on Wheels</h3>
+          <p class="mt-4 muted-l font-light leading-relaxed flex-1">India’s first tea café built on a railway carriage, in Asansol — a modern tribute to the historic romance of tea and the railways.</p>
+          <span class="more mt-8">Learn more <svg width="22" height="10" viewBox="0 0 22 10" fill="none"><path d="M0 5h20M16 1l4 4-4 4" stroke="currentColor"/></svg></span>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================
+     6. MANUFACTURING — 13 UNITS + LOGO MARQUEES
+     ================================================================ -->
+<section id="units" class="sec relative py-28 md:py-44 overflow-hidden" data-theme="moss">
+  <div class="max-w-site mx-auto px-5 md:px-10 relative">
+    <span class="outline-num absolute -top-10 md:-top-24 right-0 md:right-6 text-[14rem] md:text-[26rem] leading-none pointer-events-none select-none" aria-hidden="true" id="bigThirteen">13</span>
+    <p class="eyebrow relative" data-reveal>Manufacturing</p>
+    <h2 class="font-display mega mt-8 relative" data-split>Thirteen units,<br /><span class="accent sheen">one standard</span></h2>
+    <p class="mt-10 max-w-xl muted-d font-light leading-relaxed text-lg relative" data-reveal>The flagship, Aman Tea Pvt. Ltd., is amongst India’s top-rated factories. Across every unit, the group symbolises quality and robust technology in the tea industry.</p>
+  </div>
+
+  <div class="mt-20 md:mt-28 space-y-5" data-reveal>
+    <!-- Group brands → scrolls left -->
+    <div class="marquee" style="--dur: 38s" aria-label="Group brands">
+      <div class="marquee-track" data-marquee>
+        <div class="logo-tile sm"><img src="assets/logos/aman-tea-logo.png" alt="Aman Tea" loading="lazy" /></div><span class="m-leaf" aria-hidden="true"><svg viewBox="0 0 100 176"><use href="#leaf-glyph"/></svg></span>
+        <div class="logo-tile sm"><img src="assets/logos/loco-chai-chun.png" alt="Chai Chun" loading="lazy" /></div><span class="m-leaf" aria-hidden="true"><svg viewBox="0 0 100 176"><use href="#leaf-glyph"/></svg></span>
+        <div class="logo-tile sm"><img src="assets/logos/logo-okayti.png" alt="Okayti" loading="lazy" /></div><span class="m-leaf" aria-hidden="true"><svg viewBox="0 0 100 176"><use href="#leaf-glyph"/></svg></span>
+        <div class="logo-tile sm"><img src="assets/logos/logo-chai-veda.png" alt="Chai Veda" loading="lazy" /></div><span class="m-leaf" aria-hidden="true"><svg viewBox="0 0 100 176"><use href="#leaf-glyph"/></svg></span>
+        <div class="logo-tile sm"><img src="assets/logos/logo-chairasa.png" alt="Chai Rasa" loading="lazy" /></div><span class="m-leaf" aria-hidden="true"><svg viewBox="0 0 100 176"><use href="#leaf-glyph"/></svg></span>
+        <div class="logo-tile sm"><img src="assets/logos/logo-ever-green.png" alt="Evergreen" loading="lazy" /></div><span class="m-leaf" aria-hidden="true"><svg viewBox="0 0 100 176"><use href="#leaf-glyph"/></svg></span>
+        <div class="logo-tile sm"><img src="assets/logos/logo-apex-tea.png" alt="Apex Tea" loading="lazy" /></div><span class="m-leaf" aria-hidden="true"><svg viewBox="0 0 100 176"><use href="#leaf-glyph"/></svg></span>
+      </div>
+    </div>
+    <!-- Manufacturing units → scrolls right (populated from UNITS) -->
+    <div class="marquee reverse" style="--dur: 60s" aria-label="Manufacturing units">
+      <div class="marquee-track" data-marquee id="unitMarquee"></div>
+    </div>
+  </div>
+
+  <div class="max-w-site mx-auto px-5 md:px-10 mt-20 md:mt-28">
+    <div class="h-px bg-leaf/30 draw-x origin-left"></div>
+    <ol id="unitList" class="grid sm:grid-cols-2 lg:grid-cols-4 gap-x-10"></ol>
+    <p class="font-display italic text-3xl md:text-4xl text-cream/80 mt-16 max-w-3xl" data-split>“Combining existing things in a new concoction is innovation.”</p>
+  </div>
+</section>
+
+<!-- ================================================================
+     7. PHILOSOPHY
+     ================================================================ -->
+<section id="philosophy" class="sec relative overflow-hidden" data-theme="black">
+  <canvas id="steamLeaves" aria-hidden="true"></canvas>
+  <div class="relative max-w-6xl mx-auto px-5 md:px-10 py-32 md:py-52 text-center">
+    <p class="eyebrow center" data-reveal>Philosophy</p>
+    <svg class="mx-auto mt-14 text-leaf" data-reveal width="54" height="40" viewBox="0 0 42 32" fill="currentColor" aria-hidden="true"><path d="M0 32V19C0 8 6 1.5 17 0l1.5 3.5C12 5.5 9 9.5 9 15h8v17H0zm24 0V19C24 8 30 1.5 41 0l1 3.5C36 5.5 33 9.5 33 15h8v17H24z"/></svg>
+    <blockquote class="font-display mt-12 text-[2.3rem] leading-[1.12] sm:text-6xl md:text-[5rem] md:leading-[1.04]" id="philoQuote" data-split>
+      Success in the tea industry is not measured by volume, but by the <span class="accent sheen" id="philoSheen">purity of the connection</span> between the earth and the final sip.
+    </blockquote>
+    <img src="assets/hero/signature.png" alt="Rajeev Baid" class="mx-auto mt-14 h-14 w-auto opacity-85" data-reveal loading="lazy" />
+    <div class="h-px w-48 mx-auto my-20 bg-gradient-to-r from-transparent via-leaf to-transparent draw-x"></div>
+    <blockquote class="font-display italic text-2xl md:text-[2.2rem] leading-snug text-cream/80 max-w-4xl mx-auto" data-reveal>
+      “There is an organic relationship between businesses and their passionate owners who truly love what they do. I’m no different — I started my business because I honestly enjoy coming to work every day to create something beautiful that can impact others.”
+    </blockquote>
+  </div>
+</section>
+
+<!-- ================================================================
+     8. IN THE PRESS
+     ================================================================ -->
+<section id="press" class="sec relative py-28 md:py-44 overflow-hidden" data-theme="cream">
+  <div class="max-w-site mx-auto px-5 md:px-10">
+    <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-10 mb-12 md:mb-16">
+      <div>
+        <p class="eyebrow" data-reveal>In the Press</p>
+        <h2 class="font-display giant mt-8 text-ink" data-split>Stories, <span class="accent sheen">told by others</span></h2>
+      </div>
+      <div class="flex items-center gap-4" data-reveal>
+        <button id="pressPrev" class="icon-btn text-ink magnetic" aria-label="Previous articles"><svg width="16" height="10" viewBox="0 0 22 10" fill="none"><path d="M22 5H2M6 1L2 5l4 4" stroke="currentColor"/></svg></button>
+        <button id="pressNext" class="icon-btn text-ink magnetic" aria-label="Next articles"><svg width="16" height="10" viewBox="0 0 22 10" fill="none"><path d="M0 5h20M16 1l4 4-4 4" stroke="currentColor"/></svg></button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Populated from PRESS below -->
+  <div id="pressTrack" class="press-track flex gap-7 overflow-x-auto px-5 md:px-10 py-8" data-cursor="drag"></div>
+
+  <div class="max-w-site mx-auto px-5 md:px-10 mt-6 flex items-center gap-6">
+    <div class="h-px flex-1 bg-ink/15 relative overflow-hidden"><div id="pressProgress" class="absolute inset-y-0 left-0 bg-leaf" style="width:10%"></div></div>
+    <a href="#" data-placeholder="paper-articles.html" class="more u-link">All coverage <svg width="22" height="10" viewBox="0 0 22 10" fill="none"><path d="M0 5h20M16 1l4 4-4 4" stroke="currentColor"/></svg></a>
+  </div>
+</section>
+
+<!-- ================================================================
+     9. BIT BY BIT, PIECING IT TOGETHER
+     ================================================================ -->
+<section id="story" class="sec relative overflow-hidden" data-theme="dark">
+  <div class="absolute inset-0 pointer-events-none" aria-hidden="true">
+    <div class="blob w-[40vw] h-[40vw] bg-leaf/60 -left-[10vw] top-[10%]"></div>
+    <div class="blob b2 w-[32vw] h-[32vw] bg-brew/50 -right-[8vw] -bottom-[10%]"></div>
+  </div>
+  <div class="relative max-w-site mx-auto px-5 md:px-10 py-28 md:py-40 grid lg:grid-cols-12 gap-14 items-center">
+    <div class="lg:col-span-5 grid grid-cols-3 gap-4">
+      <div class="col-span-2 row-span-2 clip-img zoom" data-clip="up" data-cursor="view" data-depth="0.06"><img src="assets/gallery/rajeev-tasting.jpg" alt="Rajeev Baid tasting tea" class="w-full h-full object-cover" loading="lazy" /></div>
+      <div class="aspect-square clip-img zoom" data-clip="up" data-depth="-0.12"><img src="assets/misc/teacup-steam.jpg" alt="A steaming cup of tea" class="w-full h-full object-cover" loading="lazy" /></div>
+      <div class="aspect-square clip-img zoom" data-clip="up" data-depth="-0.2"><img src="assets/gallery/pic121.jpg" alt="Chai Rasa tea room" class="w-full h-full object-cover" loading="lazy" /></div>
+    </div>
+    <div class="lg:col-span-6 lg:col-start-7">
+      <p class="eyebrow" data-reveal>The Ongoing Story</p>
+      <h2 class="font-display giant mt-8" data-split>Bit by bit, <span class="accent sheen">piecing it together</span></h2>
+      <p class="mt-10 text-xl leading-relaxed muted-d font-light" data-reveal>New ideas, newer realities, endless possibilities! Welcoming you all to be a part of this perpetual exploration journey.</p>
+      <div class="mt-12 flex flex-wrap gap-x-10 gap-y-5" data-reveal>
+        <a href="#" data-placeholder="blog.html"    class="more u-link magnetic">Read the Blog <svg width="22" height="10" viewBox="0 0 22 10" fill="none"><path d="M0 5h20M16 1l4 4-4 4" stroke="currentColor"/></svg></a>
+        <a href="#" data-placeholder="podcast.html" class="more u-link magnetic">Listen to the Podcast <svg width="22" height="10" viewBox="0 0 22 10" fill="none"><path d="M0 5h20M16 1l4 4-4 4" stroke="currentColor"/></svg></a>
+        <a href="#" data-placeholder="youtube.html" class="more u-link magnetic">Watch on YouTube <svg width="22" height="10" viewBox="0 0 22 10" fill="none"><path d="M0 5h20M16 1l4 4-4 4" stroke="currentColor"/></svg></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================
+     10. CONTACT
+     ================================================================ -->
+<section id="contact" class="sec relative py-28 md:py-44" data-theme="cream">
+  <div class="max-w-site mx-auto px-5 md:px-10">
+    <!-- 9 · where the travelling leaf lands and becomes a cup -->
+    <div id="cupStage" class="relative w-20 h-24 md:w-28 md:h-32 mb-8" aria-hidden="true">
+      <svg class="stage-leaf absolute inset-0 m-auto w-[46%] h-[90%]" viewBox="0 0 100 176"><use href="#leaf-glyph"/></svg>
+      <svg class="stage-cup absolute inset-0 w-full h-full" viewBox="0 0 120 120" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+        <path class="steam" d="M48 40 C42 32 54 26 48 14"/>
+        <path class="steam" d="M62 42 C56 32 68 24 62 8"/>
+        <path class="steam" d="M76 40 C70 32 82 26 76 14"/>
+        <path d="M28 54 H92 C92 78 82 94 60 94 C38 94 28 78 28 54 Z" fill="currentColor" fill-opacity=".14"/>
+        <ellipse cx="60" cy="54" rx="32" ry="5" fill="currentColor" fill-opacity=".45" stroke="none"/>
+        <path d="M92 60 C106 58 108 78 90 82"/>
+        <path d="M16 100 C30 108 90 108 104 100"/>
+      </svg>
+    </div>
+    <div class="flex items-end justify-between gap-6 md:gap-10">
+      <h2 class="font-display mega text-ink" data-split>Let's start a<br /><span class="accent sheen brew">conversation.</span></h2>
+      <img src="assets/hero/bg-letter-solution.png" alt="Rajeev Baid enjoying a cup of tea" class="hidden md:block w-40 lg:w-56 h-auto shrink-0 mb-4" data-reveal loading="lazy" />
+    </div>
+    <div class="h-px bg-leaf/50 mt-16 draw-x origin-left"></div>
+
+    <div class="grid lg:grid-cols-12 gap-16 mt-16">
+      <div class="lg:col-span-5">
+        <p class="muted-l font-light leading-relaxed max-w-md text-lg" data-reveal>For partnerships, speaking invitations, media or a cup of tea — request an appointment and the office will be in touch.</p>
+        <div class="mt-12 space-y-8" data-reveal>
+          <div>
+            <p class="field-label">Email</p>
+            <a href="mailto:rajeev@chaichun.in" class="font-display text-3xl md:text-4xl text-ink u-link mt-1">rajeev@chaichun.in</a>
+          </div>
+          <div>
+            <p class="field-label">Office</p>
+            <a href="tel:+919851001111" class="font-display text-2xl text-ink/80 u-link mt-1">+91 98510 01111</a>
+          </div>
+        </div>
+        <div class="mt-12 flex gap-3 text-ink" data-reveal>
+          <a href="https://www.linkedin.com/in/rajeev-baid-6a3a9843" target="_blank" rel="noopener" class="icon-btn magnetic" aria-label="LinkedIn"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM9 9h3.8v1.7h.1c.5-1 1.8-2 3.8-2 4 0 4.8 2.6 4.8 6V21h-4v-5.5c0-1.3 0-3-1.8-3s-2.1 1.4-2.1 2.9V21H9z"/></svg></a>
+          <a href="https://instagram.com/rajeevbaidofficial" target="_blank" rel="noopener" class="icon-btn magnetic" aria-label="Instagram"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".8" fill="currentColor"/></svg></a>
+          <a href="https://twitter.com/rajeeevbaid" target="_blank" rel="noopener" class="icon-btn magnetic" aria-label="X / Twitter"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18.2 2H21l-6.6 7.5L22 22h-6l-4.7-6.2L5.8 22H3l7-8L2 2h6.2l4.3 5.7zm-1 18h1.6L7 3.9H5.3z"/></svg></a>
+          <a href="https://www.youtube.com/watch?v=IvkGH1LNV9o" target="_blank" rel="noopener" class="icon-btn magnetic" aria-label="YouTube"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M23 7.2a3 3 0 0 0-2-2C19.1 4.7 12 4.7 12 4.7s-7.1 0-9 .5a3 3 0 0 0-2 2A31 31 0 0 0 .5 12a31 31 0 0 0 .5 4.8 3 3 0 0 0 2 2c1.9.5 9 .5 9 .5s7.1 0 9-.5a3 3 0 0 0 2-2 31 31 0 0 0 .5-4.8 31 31 0 0 0-.5-4.8zM9.7 15.1V8.9l5.9 3.1z"/></svg></a>
+          <a href="https://www.facebook.com/RajeevBaidOfficial/" target="_blank" rel="noopener" class="icon-btn magnetic" aria-label="Facebook"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M14 8V6c0-.9.6-1.2 1-1.2h2.8V1h-3.9C10 1 9.4 3.8 9.4 5.6V8H7v4h2.4v11H14V12h3.3l.4-4z"/></svg></a>
+        </div>
+      </div>
+
+      <div class="lg:col-span-7" data-reveal>
+        <form id="apptForm" class="bg-cream-deep border border-ink/10 p-7 sm:p-10 md:p-14" novalidate>
+          <p class="font-display text-4xl text-ink">Request an <span class="accent">appointment</span></p>
+          <div class="grid sm:grid-cols-2 gap-x-10 gap-y-8 mt-10">
+            <label class="block"><span class="field-label">Name</span><input class="field" type="text" name="name" placeholder="Your full name" required /></label>
+            <label class="block"><span class="field-label">Email</span><input class="field" type="email" name="email" placeholder="you@company.com" required /></label>
+            <label class="block sm:col-span-2"><span class="field-label">Phone</span><input class="field" type="tel" name="phone" placeholder="+91" /></label>
+            <label class="block sm:col-span-2"><span class="field-label">Message</span><textarea class="field resize-none" name="message" rows="4" placeholder="What would you like to discuss?"></textarea></label>
+          </div>
+          <div class="mt-12 flex flex-col sm:flex-row sm:items-center gap-6 sm:justify-between">
+            <button type="submit" class="btn solid magnetic">Send Request</button>
+            <p id="formNote" class="text-sm muted-l" aria-live="polite">Replies within two working days.</p>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ================================================================
+     11. FOOTER
+     ================================================================ -->
+<footer class="sec pt-20 pb-10" data-theme="black">
+  <div class="max-w-site mx-auto px-5 md:px-10">
+    <div class="grid sm:grid-cols-2 lg:grid-cols-12 gap-12">
+      <div class="lg:col-span-4">
+        <a href="#top" class="font-display text-4xl text-cream">Rajeev <span class="accent">Baid</span></a>
+        <p class="mt-5 muted-d font-light leading-relaxed max-w-xs">Founder &amp; Chairman, Aman Tea Group — Chai Chun · Okayti Estate · Aman Tea.</p>
+      </div>
+      <div class="lg:col-span-3">
+        <p class="eyebrow">Visit</p>
+        <!-- TODO: office address not published on rajeevbaid.info — add from client -->
+        <p class="mt-5 muted-d font-light leading-relaxed">By appointment.<br /><a href="#contact" class="u-link text-leaf">Request a visit</a></p>
+      </div>
+      <div class="lg:col-span-2">
+        <p class="eyebrow">Explore</p>
+        <ul class="mt-5 space-y-2.5 text-sm text-cream/70">
+          <li><a href="#journey" class="u-link hover:text-leaf transition">Journey</a></li>
+          <li><a href="#portfolio" class="u-link hover:text-leaf transition">Portfolio</a></li>
+          <li><a href="#philosophy" class="u-link hover:text-leaf transition">Philosophy</a></li>
+          <li><a href="#press" class="u-link hover:text-leaf transition">Press</a></li>
+          <li><a href="#" data-placeholder="achievements.html" class="u-link hover:text-leaf transition">Achievements</a></li>
+          <li><a href="#" data-placeholder="gallery.html" class="u-link hover:text-leaf transition">Photo Gallery</a></li>
+          <li><a href="#" data-placeholder="ai-agent.html" class="u-link hover:text-leaf transition">AI Agent</a></li>
+        </ul>
+      </div>
+      <div class="lg:col-span-3">
+        <p class="eyebrow">Reach</p>
+        <ul class="mt-5 space-y-2.5 text-sm text-cream/70">
+          <li><a href="tel:+919851001111" class="u-link hover:text-leaf transition">+91 98510 01111</a></li>
+          <li><a href="mailto:rajeev@chaichun.in" class="u-link hover:text-leaf transition">rajeev@chaichun.in</a></li>
+        </ul>
+        <div class="mt-6 flex gap-3 text-cream/70">
+          <a href="https://www.linkedin.com/in/rajeev-baid-6a3a9843" target="_blank" rel="noopener" class="icon-btn" style="width:38px;height:38px" aria-label="LinkedIn"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM9 9h3.8v1.7h.1c.5-1 1.8-2 3.8-2 4 0 4.8 2.6 4.8 6V21h-4v-5.5c0-1.3 0-3-1.8-3s-2.1 1.4-2.1 2.9V21H9z"/></svg></a>
+          <a href="https://instagram.com/rajeevbaidofficial" target="_blank" rel="noopener" class="icon-btn" style="width:38px;height:38px" aria-label="Instagram"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/></svg></a>
+          <a href="https://twitter.com/rajeeevbaid" target="_blank" rel="noopener" class="icon-btn" style="width:38px;height:38px" aria-label="X / Twitter"><svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M18.2 2H21l-6.6 7.5L22 22h-6l-4.7-6.2L5.8 22H3l7-8L2 2h6.2l4.3 5.7zm-1 18h1.6L7 3.9H5.3z"/></svg></a>
+          <a href="https://www.facebook.com/RajeevBaidOfficial/" target="_blank" rel="noopener" class="icon-btn" style="width:38px;height:38px" aria-label="Facebook"><svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M14 8V6c0-.9.6-1.2 1-1.2h2.8V1h-3.9C10 1 9.4 3.8 9.4 5.6V8H7v4h2.4v11H14V12h3.3l.4-4z"/></svg></a>
+        </div>
+      </div>
+    </div>
+    <div class="h-px bg-gradient-to-r from-transparent via-brew/60 to-transparent mt-16"></div>
+    <div class="mt-8 flex flex-col sm:flex-row gap-3 justify-between text-xs tracking-[.14em] text-cream/40">
+      <p>© <span id="year">2026</span> Rajeev Baid. All rights reserved.</p>
+      <p>rajeevbaid.info · Design prototype</p>
+    </div>
+  </div>
+</footer>
+
+<div id="toast" class="fixed bottom-6 left-1/2 -translate-x-1/2 z-[60] bg-ink-black border border-leaf/40 text-cream text-sm px-6 py-3 opacity-0 pointer-events-none transition-opacity duration-500" role="status"></div>
+
+<!-- GSAP — the only heavy dependency; deferred so it never blocks first paint -->
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+<script>
+/* ================================================================
+   CONTENT — edit here
+   ================================================================ */
+const UNITS = [
+  { name: 'Evergreen',      full: 'Evergreen Tea',                     logo: 'evergreen_tea_new.png' },
+  { name: 'Apex',           full: 'Apex Tea Pvt. Ltd.',                logo: 'apex_tea.png' },
+  { name: 'Kunta Agro',     full: 'Kunta Agro Pvt. Ltd.',              logo: 'kunta_tea.png' },
+  { name: 'Harmati',        full: 'Harmati Tea',                       logo: 'harmati_tea.png' },
+  { name: 'Rahaman Agro',   full: 'Rahaman Agro Plantation Pvt. Ltd.', logo: 'rahman_tea.png' },
+  { name: 'Sreerupa',       full: 'Sreerupa Tea &amp; Industries',     logo: 'sreerupa_tea.png' },
+  { name: 'Duke',           full: 'Duke Tea Pvt. Ltd.',                logo: 'duke_tea.png' },
+  { name: 'Jadabpur',       full: 'Jadabpur Tea Co. Ltd.',             logo: 'jadabpur_tea.png' },
+  { name: 'Satish Chandra', full: 'Satish Chandra Tea',                logo: 'satish_chandra.png' },
+  { name: 'Aman / AAR BEE', full: 'Aman Tea (AAR BEE)',                logo: 'aar_bee_tea.png' },
+  { name: 'Jogopur',        full: 'Jogopur',                           logo: null, hidden: true }, // hidden from the site for now — delete `hidden: true` to show it again
+  { name: 'Sreerang',       full: 'Sreerang',                          logo: 'sreerang.png' },
+  { name: 'Bijulee',        full: 'Bijulee Tea Private Ltd.',          logo: 'bijulee_tea.png' }
+];
+
+const PRESS = [ // from rajeevbaid.info → News & Media
+  { src: 'YourStory (Hindi)',   date: 'Dec 19, 2024', img: 'assets/gallery/pic119.jpg',         title: 'Once sold tea at a railway station; today his tea export business spans the US, Japan and Europe', url: 'https://yourstory.com/hindi/selling-tea-railway-station-tea-export-business-rajeev-baid-chai-chun-okayti-tea-estate' },
+  { src: 'Outlook India',       date: 'Dec 16, 2024', img: 'assets/gallery/pic120.jpg',         title: 'Inspiring Entrepreneurs of 2024', url: 'https://www.outlookindia.com/hub4business/inspiring-entrepreneurs-of-2024' },
+  { src: 'The Print',           date: 'Sep 26, 2024', img: 'assets/gallery/pic124.jpg',         title: 'Okayti Tea unveils new factory outlet at Bagdogra Airport, expanding its legacy of organic Darjeeling teas', url: 'https://theprint.in/ani-press-releases/okayti-tea-unveils-new-factory-outlet-at-bagdogra-airport-expanding-its-legacy-of-organic-darjeeling-teas/2284959/' },
+  { src: 'The Daily Guardian',  date: 'Jul 23, 2024', img: 'assets/gallery/pic118.jpg',         title: 'Union Budget 2024: Industry leaders assess economic impact and policy priorities', url: 'https://thedailyguardian.com/others/union-budget-2024-industry-leaders-reactions/' },
+  { src: 'Entrepreneurs Today', date: 'Feb 20, 2024', img: 'assets/gallery/rajeev-tasting.jpg', title: 'The entrepreneur brewing change in the tea industry: decoding Rajeev Baid’s journey', url: 'https://entrepreneurstoday.in/the-entrepreneur-brewing-change-in-the-tea-industry-decoding-rajeev-baids-journey/' },
+  { src: 'ANI News',            date: 'Jan 09, 2024', img: 'assets/misc/tea-leaf-pouch.jpg',    title: 'Chai Chun introduces Bagan Bahar CTC chai packets at INDUS FOOD 2024', url: 'https://www.aninews.in/news/business/business/chai-chun-introduces-bagan-bahar-ctc-chai-packets-unveiling-the-essence-of-tradition-and-flavor-at-indus-food-202420240109150821/' },
+  { src: 'ANI News',            date: 'Dec 01, 2023', img: 'assets/gallery/pic122.jpg',         title: 'Okayti Tea Estate’s moonlight plucking: a time-honoured tradition illuminating Darjeeling’s finest tea', url: 'https://www.aninews.in/news/business/business/okayti-tea-estates-moonlight-plucking-a-time-honored-tradition-illuminating-darjeelings-finest-tea20231201110354/' },
+  { src: 'NDTV India',          date: 'Jul 29, 2022', img: 'assets/gallery/pic117.jpg',         title: 'Rajeev Baid used to sell tea at Kishanganj station in Bihar — today he is the champion of tea', url: 'https://ndtv.in/zara-hatke/rajeev-baid-used-to-sell-tea-at-kishanganj-station-in-bihar-today-he-is-the-champion-of-tea-3202014' }
+];
+
+const LEAF_SEP = '<span class="m-leaf" aria-hidden="true"><svg viewBox="0 0 100 176"><use href="#leaf-glyph"/></svg></span>';
+const ARROW = '<svg width="22" height="10" viewBox="0 0 22 10" fill="none"><path d="M0 5h20M16 1l4 4-4 4" stroke="currentColor"/></svg>';
+
+/* ================================================================
+   RENDER — units, marquees, press
+   ================================================================ */
+document.getElementById('unitMarquee').innerHTML = UNITS.filter(u => !u.hidden).map(u => u.logo
+  ? `<div class="logo-tile"><img src="assets/manufacturing/${u.logo}" alt="${u.name}" loading="lazy" /></div>`
+  : `<div class="logo-tile"><span class="font-display italic text-3xl text-ink/70">${u.name}</span></div>`).join(LEAF_SEP) + LEAF_SEP;
+
+document.getElementById('unitList').innerHTML = UNITS.filter(u => !u.hidden).map((u, i) => `
+  <li class="flex items-baseline gap-5 py-5 border-b border-leaf/15 group" data-unit>
+    <span class="font-display text-leaf text-lg w-8 shrink-0">${String(i + 1).padStart(2, '0')}</span>
+    <span>
+      <span class="block font-display text-2xl md:text-[1.7rem] leading-tight transition-colors group-hover:text-leaf-light">${u.name}</span>
+      <span class="block mt-1 text-[.6rem] tracking-[.26em] uppercase text-cream/40">${u.full}</span>
+    </span>
+  </li>`).join('');
+
+document.getElementById('pressTrack').innerHTML = PRESS.map(p => `
+  <article class="press-card relative shrink-0 w-[84%] sm:w-[46%] lg:w-[31%] xl:w-[400px] border border-ink/15 bg-cream-deep flex flex-col" data-press>
+    <svg class="press-leaf" viewBox="0 0 100 176" aria-hidden="true"><use href="#leaf-glyph"/></svg>
+    <div class="zoom aspect-[16/10]"><img src="${p.img}" alt="" class="w-full h-full object-cover" style="object-position:50% 25%" loading="lazy" draggable="false" /></div>
+    <div class="p-8 flex flex-col flex-1">
+      <p class="text-[.64rem] tracking-[.28em] uppercase text-leaf-dark">${p.src} · <time>${p.date}</time></p>
+      <h3 class="font-display text-[1.65rem] leading-tight mt-4 text-ink transition-colors">${p.title}</h3>
+      <a href="${p.url}" target="_blank" rel="noopener" class="more u-link mt-auto pt-8 self-start" draggable="false">Read article ${ARROW}</a>
+    </div>
+  </article>`).join('');
+
+// Duplicate marquee contents so the -50% loop is seamless
+document.querySelectorAll('[data-marquee]').forEach(t => {
+  t.insertAdjacentHTML('beforeend', t.innerHTML.replace(/<img /g, '<img aria-hidden="true" '));
+});
+
+/* ================================================================
+   UI — nav, menu, toast, press controls, form (no GSAP needed)
+   ================================================================ */
+const nav = document.getElementById('nav');
+const onScroll = () => {
+  const y = window.scrollY;
+  nav.classList.toggle('scrolled', y > 30);
+  nav.classList.toggle('scrolled-deep', y > window.innerHeight * 0.6);
+};
+onScroll(); addEventListener('scroll', onScroll, { passive: true });
+
+const burger = document.getElementById('burger'), menu = document.getElementById('mobileMenu');
+function setMenu(open) {
+  menu.classList.toggle('open', open); burger.classList.toggle('open', open);
+  burger.setAttribute('aria-expanded', open); menu.setAttribute('aria-hidden', !open);
+  document.body.style.overflow = open ? 'hidden' : '';
+}
+burger.addEventListener('click', () => setMenu(!menu.classList.contains('open')));
+menu.querySelectorAll('a[href^="#"]:not([data-placeholder])').forEach(a => a.addEventListener('click', () => setMenu(false)));
+addEventListener('keydown', e => { if (e.key === 'Escape') setMenu(false); });
+
+const navLinks = document.querySelectorAll('.nav-link[href^="#"]');
+const spy = new IntersectionObserver(es => es.forEach(en => {
+  if (en.isIntersecting) navLinks.forEach(l => l.classList.toggle('active', l.getAttribute('href') === '#' + en.target.id));
+}), { rootMargin: '-45% 0px -50% 0px' });
+['journey', 'portfolio', 'philosophy', 'press', 'contact'].forEach(id => spy.observe(document.getElementById(id)));
+
+const toast = document.getElementById('toast'); let toastT;
+document.querySelectorAll('[data-placeholder]').forEach(a => a.addEventListener('click', e => {
+  e.preventDefault();
+  toast.textContent = `“${a.textContent.trim()}” — template coming soon (${a.dataset.placeholder})`;
+  toast.style.opacity = 1; clearTimeout(toastT); toastT = setTimeout(() => (toast.style.opacity = 0), 2600);
+}));
+
+// Press carousel: arrows, progress bar, drag-to-scroll (mouse; touch uses native swipe)
+const track = document.getElementById('pressTrack'), prog = document.getElementById('pressProgress');
+const step = () => (track.querySelector('.press-card')?.offsetWidth || 400) + 28;
+document.getElementById('pressPrev').addEventListener('click', () => track.scrollBy({ left: -step(), behavior: 'smooth' }));
+document.getElementById('pressNext').addEventListener('click', () => track.scrollBy({ left: step(), behavior: 'smooth' }));
+const updProg = () => {
+  const max = track.scrollWidth - track.clientWidth;
+  prog.style.width = (max > 0 ? 10 + (track.scrollLeft / max) * 90 : 100) + '%';
+};
+track.addEventListener('scroll', updProg, { passive: true }); updProg();
+(() => {
+  let down = false, moved = false, startX = 0, startL = 0;
+  track.addEventListener('pointerdown', e => {
+    if (e.pointerType !== 'mouse' || e.button !== 0) return;
+    down = true; moved = false; startX = e.clientX; startL = track.scrollLeft;
+  });
+  addEventListener('pointermove', e => {
+    if (!down) return;
+    const dx = e.clientX - startX;
+    if (!moved && Math.abs(dx) > 6) { moved = true; track.classList.add('dragging'); }
+    if (moved) track.scrollLeft = startL - dx;
+  });
+  addEventListener('pointerup', () => {
+    if (!down) return; down = false;
+    if (moved) {
+      track.classList.remove('dragging');
+      const w = step(); track.scrollTo({ left: Math.round(track.scrollLeft / w) * w, behavior: 'smooth' });
+    }
+  });
+  track.addEventListener('click', e => { if (moved) { e.preventDefault(); e.stopPropagation(); moved = false; } }, true);
+})();
+
+document.getElementById('apptForm').addEventListener('submit', e => {
+  e.preventDefault();
+  const f = e.target, note = document.getElementById('formNote');
+  if (!f.name.value.trim() || !/^\S+@\S+\.\S+$/.test(f.email.value)) { note.textContent = 'Please add your name and a valid email.'; note.style.color = '#5c7a2c'; return; }
+  note.textContent = `Thank you, ${f.name.value.split(' ')[0]}. We'll be in touch shortly.`; note.style.color = ''; f.reset();
+});
+document.getElementById('year').textContent = new Date().getFullYear();
+
+/* ---------- tea-leaf motif: static parts (no GSAP needed) ---------- */
+const LEAF_D = 'M52 3 C76 26 91 63 84 103 C79 129 65 147 50 158 C35 146 21 128 16 101 C10 60 28 25 52 3 Z';
+
+// 3 · vein rule: a stem with alternating veins and a leaf tip, sized to its container
+function buildVein(el) {
+  const w = Math.max(60, Math.round(el.clientWidth)), m = 13, step = w < 520 ? 72 : 112;
+  let veins = '';
+  for (let x = step * .6, i = 0; x < w - 40; x += step, i++) {
+    const up = i % 2 === 0, len = 16 + (i % 3) * 5;
+    veins += `<path class="vb" d="M${x.toFixed(1)} ${m} Q ${(x + len * .55).toFixed(1)} ${up ? m - 2 : m + 2} ${(x + len).toFixed(1)} ${up ? m - 10 : m + 10}" stroke-width=".9"/>`;
+  }
+  el.innerHTML = `<svg width="${w}" height="26" viewBox="0 0 ${w} 26" fill="none" stroke="currentColor" stroke-linecap="round">
+    <path class="vs" d="M0 ${m} C ${w * .35} ${m - 2.5} ${w * .65} ${m + 2.5} ${w - 14} ${m}" stroke-width="1.1"/>${veins}
+    <g class="vtip" transform="translate(${w - 16} ${m}) rotate(90) translate(-6 -18)"><use href="#leaf-glyph" width="12" height="21" fill="currentColor"/></g></svg>`;
+}
+const veins = [...document.querySelectorAll('[data-vein]')];
+veins.forEach(buildVein);
+let veinT; addEventListener('resize', () => { clearTimeout(veinT); veinT = setTimeout(() => veins.forEach(buildVein), 200); });
+
+// Scroll-progress bar
+const bar = document.getElementById('scrollBar');
+const onBar = () => { const max = document.documentElement.scrollHeight - innerHeight; bar.style.transform = `scaleX(${max > 0 ? scrollY / max : 0})`; };
+onBar(); addEventListener('scroll', onBar, { passive: true });
+
+/* ================================================================
+   MOTION — GSAP + ScrollTrigger (deferred scripts run before DOMContentLoaded)
+   ================================================================ */
+document.addEventListener('DOMContentLoaded', function motion() {
+  const REDUCED = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const root = document.documentElement;
+  if (!window.gsap || !window.ScrollTrigger || REDUCED) { root.classList.remove('anim'); return; } // static fallback
+
+  gsap.registerPlugin(ScrollTrigger);
+  root.classList.add('theme-js');
+
+  /* ---------- helpers ---------- */
+  // Wrap every word in a mask, preserving nested spans (.accent / .sheen)
+  function splitWords(el) {
+    const walk = node => [...node.childNodes].forEach(n => {
+      if (n.nodeType === 3) {
+        const frag = document.createDocumentFragment();
+        n.textContent.split(/(\s+)/).forEach(t => {
+          if (!t) return;
+          if (/^\s+$/.test(t)) { frag.appendChild(document.createTextNode(' ')); return; }
+          const o = document.createElement('span'); o.className = 'w';
+          const i = document.createElement('span'); i.className = 'wi'; i.textContent = t;
+          o.appendChild(i); frag.appendChild(o);
+        });
+        n.replaceWith(frag);
+      } else if (n.nodeType === 1 && n.tagName !== 'BR') walk(n);
+    });
+    walk(el);
+    return el.querySelectorAll('.wi');
+  }
+  const sweep = (el, delay = 0) => el && gsap.fromTo(el.querySelectorAll('.wi'),
+    { backgroundPosition: '100% 0' },
+    { backgroundPosition: '0% 0', duration: 1.8, ease: 'power2.inOut', stagger: .08, delay });
+
+  /* ---------- theme shift: <body> colour follows the section at mid-screen ---------- */
+  const THEMES = { dark: '#16241a', ink: '#1c2b1e', moss: '#3d4f34', black: '#111b14', cream: '#f7f3ec', cream2: '#eeeadc' };
+  document.body.style.backgroundColor = THEMES.black;
+  document.querySelectorAll('.sec[data-theme]').forEach(sec => ScrollTrigger.create({
+    trigger: sec, start: 'top 50%', end: 'bottom 50%',
+    onToggle: self => self.isActive && gsap.to(document.body, { backgroundColor: THEMES[sec.dataset.theme], duration: .9, ease: 'power2.out', overwrite: 'auto' })
+  }));
+
+  // Stroke-draw helper (no DrawSVG plugin needed)
+  const primeDraw = paths => paths.forEach(p => { const L = p.getTotalLength(); p.style.strokeDasharray = L; p.style.strokeDashoffset = L; });
+
+  // 2 · the hero leaf "grows in": outline, midrib, veins, then a soft fill and a slow sway
+  function heroLeafIn() {
+    const svg = document.getElementById('heroLeaf');
+    const strokes = [...svg.querySelectorAll('.draw')], fill = svg.querySelector('.leaf-fill');
+    primeDraw(strokes);
+    gsap.set(fill, { opacity: 0 });
+    gsap.set('#heroLeafG', { rotation: -26, scale: .72, svgOrigin: '50 158' });
+    return gsap.timeline()
+      .to('#heroLeafG', { rotation: -9, scale: 1, duration: 2.8, ease: 'expo.out', svgOrigin: '50 158' }, 0)
+      .to(strokes[0], { strokeDashoffset: 0, duration: 2.2, ease: 'power2.inOut' }, 0)
+      .to(strokes[1], { strokeDashoffset: 0, duration: 1.4, ease: 'power2.inOut' }, .5)
+      .to(strokes.slice(2), { strokeDashoffset: 0, duration: 1, ease: 'power2.out', stagger: .06 }, 1)
+      .to(fill, { opacity: 1, duration: 1.6 }, 1.8)
+      .add(() => gsap.to('#heroLeafG', { rotation: -4, duration: 5, ease: 'sine.inOut', yoyo: true, repeat: -1, svgOrigin: '50 158' }));
+  }
+
+  /* ---------- HERO load timeline ---------- */
+  const heroWords = splitWords(document.getElementById('heroTitle'));
+  gsap.set('.hero-hide', { visibility: 'visible' });
+  const tl = gsap.timeline({ defaults: { ease: 'expo.out' } });
+  tl.from('#logo', { y: -30, opacity: 0, duration: 1.2 })
+    .fromTo('#logoSheen', { backgroundPosition: '100% 0' }, { backgroundPosition: '0% 0', duration: 1.6, ease: 'power2.inOut' }, '<.2')
+    .from('#primaryNav > a, #moreMenu, #waBtn', { y: -20, opacity: 0, stagger: .06, duration: .9 }, '<')
+    .fromTo('#heroPortrait', { clipPath: 'inset(100% 0 0 0)' }, { clipPath: 'inset(0% 0 0 0)', duration: 1.8, ease: 'expo.inOut' }, 0.1)
+    .from('#heroPortraitImg', { scale: 1.35, duration: 2.4 }, 0.4)
+    .add(heroLeafIn(), 0.4)
+    .from('#heroEyebrow', { opacity: 0, x: -30, duration: 1 }, 0.5)
+    .from(heroWords, { yPercent: 115, rotate: 4, duration: 1.4, stagger: .09 }, 0.6)
+    .add(() => sweep(document.querySelector('#heroTitle .sheen')), 1.6)
+    .from('#heroLine', { scaleX: 0, duration: 1.4, ease: 'expo.inOut' }, 1.2)
+    .from('#heroSub', { opacity: 0, y: 24, duration: 1.1 }, 1.3)
+    .from('#heroCtas > *', { opacity: 0, y: 24, stagger: .1, duration: 1 }, 1.45)
+    .from('#heroCaption, #scrollCue', { opacity: 0, duration: 1 }, 1.8);
+  // Re-sweep the leaf-green headline periodically — keeps the hero "alive"
+  gsap.delayedCall(6, function loop() { sweep(document.querySelector('#heroTitle .sheen')); gsap.delayedCall(6, loop); });
+
+  /* ---------- kinetic headlines: words slide up through masks ---------- */
+  document.querySelectorAll('[data-split]').forEach(el => {
+    const words = splitWords(el);
+    gsap.from(words, {
+      yPercent: 115, rotate: 3, duration: 1.3, ease: 'expo.out', stagger: .06,
+      scrollTrigger: { trigger: el, start: 'top 85%' },
+      onComplete: () => sweep(el.querySelector('.sheen'))
+    });
+  });
+
+  gsap.utils.toArray('[data-reveal]').forEach(el => gsap.fromTo(el, { opacity: 0, y: 40 }, {
+    opacity: 1, y: 0, duration: 1.2, ease: 'expo.out', scrollTrigger: { trigger: el, start: 'top 90%' }
+  }));
+
+  // Thin rules draw themselves in
+  gsap.utils.toArray('.draw-x').forEach(el => gsap.fromTo(el, { scaleX: 0 }, {
+    scaleX: 1, duration: 1.6, ease: 'expo.inOut', scrollTrigger: { trigger: el, start: 'top 92%' }
+  }));
+
+  // 3 · vein rules: stem draws, veins sprout, leaf tip opens
+  veins.forEach(el => {
+    const stem = el.querySelector('.vs'), vb = [...el.querySelectorAll('.vb')], tip = el.querySelector('.vtip');
+    primeDraw([stem, ...vb]); gsap.set(tip, { opacity: 0 });
+    gsap.timeline({ scrollTrigger: { trigger: el, start: 'top 90%' } })
+      .to(stem, { strokeDashoffset: 0, duration: 1.8, ease: 'expo.inOut' })
+      .to(vb, { strokeDashoffset: 0, duration: .6, ease: 'power2.out', stagger: .05 }, .5)
+      .to(tip, { opacity: 1, duration: .6 }, 1.4);
+  });
+
+  // Journey kicker: words light up as you scroll through it
+  document.querySelectorAll('[data-scrub-words]').forEach(el => {
+    const words = splitWords(el);
+    gsap.fromTo(words, { opacity: .12 }, {
+      opacity: 1, stagger: .1, ease: 'none',
+      scrollTrigger: { trigger: el, start: 'top 80%', end: 'bottom 45%', scrub: .6 }
+    });
+  });
+
+  // Image clip/wipe reveals
+  const CLIP = { left: 'inset(0% 100% 0% 0%)', right: 'inset(0% 0% 0% 100%)', up: 'inset(100% 0% 0% 0%)' };
+  document.querySelectorAll('[data-clip]').forEach(el => {
+    const img = el.querySelector('img');
+    if (el.dataset.clip === 'leaf') { // 4 · signature moment: a leaf opens and becomes the image
+      const cp = document.getElementById('leafClipPath'), st = { s: 0, r: -24 };
+      const setT = () => cp.setAttribute('transform', `translate(.5 .52) rotate(${st.r}) scale(${st.s}) translate(-.5 -.5)`);
+      el.style.clipPath = el.style.webkitClipPath = 'url(#leafClip)'; setT();
+      gsap.timeline({ scrollTrigger: { trigger: el, start: 'top 80%' } })
+        .to(st, { s: .95, r: -8, duration: 1.2, ease: 'power3.out', onUpdate: setT })
+        .to(st, { s: 3.6, r: 0, duration: 1.4, ease: 'expo.inOut', onUpdate: setT,
+                  onComplete: () => { el.style.clipPath = el.style.webkitClipPath = 'none'; } }, '+=.2')
+        .fromTo(img, { scale: 1.3 }, { scale: 1, duration: 2.6, ease: 'expo.out', clearProps: 'transform' }, 0);
+      return;
+    }
+    gsap.timeline({ scrollTrigger: { trigger: el, start: 'top 85%' } })
+      .fromTo(el, { clipPath: CLIP[el.dataset.clip] || CLIP.up }, { clipPath: 'inset(0% 0% 0% 0%)', duration: 1.6, ease: 'expo.inOut' })
+      .fromTo(img, { scale: 1.3 }, { scale: 1, duration: 2, ease: 'expo.out', clearProps: 'transform' }, '<.1');
+  });
+
+  // Staggered grids
+  gsap.from('[data-card]', { y: 80, opacity: 0, duration: 1.2, ease: 'expo.out', stagger: .1, scrollTrigger: { trigger: '#ventureGrid', start: 'top 82%' } });
+  gsap.from('[data-unit]', { y: 30, opacity: 0, duration: .9, ease: 'expo.out', stagger: .05, scrollTrigger: { trigger: '#unitList', start: 'top 88%' } });
+  gsap.from('[data-press]', { x: 140, opacity: 0, duration: 1.3, ease: 'expo.out', stagger: .08, scrollTrigger: { trigger: '#pressTrack', start: 'top 85%' } });
+
+  // Philosophy: a second, slower sheen once the quote is centred
+  ScrollTrigger.create({ trigger: '#philoQuote', start: 'top 40%', once: true, onEnter: () => gsap.delayedCall(.8, () => sweep(document.getElementById('philoSheen'))) });
+
+  /* ---------- counters ---------- */
+  document.querySelectorAll('[data-count]').forEach(el => {
+    const to = +el.dataset.count, from = +(el.dataset.from || 0), obj = { v: from };
+    el.textContent = from;
+    gsap.to(obj, {
+      v: to, duration: 2.8, ease: 'expo.out',
+      onUpdate: () => (el.textContent = Math.round(obj.v)),
+      scrollTrigger: { trigger: el, start: 'top 88%' }
+    });
+  });
+  gsap.from('.stat', { y: 70, opacity: 0, duration: 1.3, ease: 'expo.out', stagger: .12, scrollTrigger: { trigger: '#numbers dl', start: 'top 85%' } });
+
+  /* ---------- desktop only: parallax, cursor, magnetic ---------- */
+  gsap.matchMedia().add('(min-width: 1024px) and (pointer: fine)', () => {
+    const hero = { trigger: '#hero', start: 'top top', end: 'bottom top', scrub: true };
+    gsap.to('#heroBgImg', { yPercent: 14, ease: 'none', scrollTrigger: hero });          // background: slowest
+    gsap.to('#heroPortraitWrap', { yPercent: 16, ease: 'none', scrollTrigger: hero });   // portrait: slower than scroll
+    gsap.to('#heroCopy', { yPercent: -10, opacity: .15, ease: 'none', scrollTrigger: hero });
+    gsap.to('#bigThirteen', { yPercent: 30, ease: 'none', scrollTrigger: { trigger: '#units', scrub: true } });
+    document.querySelectorAll('[data-depth]').forEach(el => gsap.to(el, {
+      yPercent: +el.dataset.depth * 100, ease: 'none', scrollTrigger: { trigger: el, scrub: true }
+    }));
+
+    // Custom cursor
+    root.classList.add('has-cursor');
+    const dot = document.querySelector('.cursor-dot'), ring = document.querySelector('.cursor-ring'), label = ring.querySelector('span');
+    const dx = gsap.quickTo(dot, 'x', { duration: .1 }), dy = gsap.quickTo(dot, 'y', { duration: .1 });
+    const rx = gsap.quickTo(ring, 'x', { duration: .5, ease: 'power3' }), ry = gsap.quickTo(ring, 'y', { duration: .5, ease: 'power3' });
+    const move = e => { root.classList.add('cursor-live'); dx(e.clientX); dy(e.clientY); rx(e.clientX); ry(e.clientY); };
+    const over = e => {
+      ring.classList.remove('is-link', 'is-label'); dot.classList.remove('hide');
+      const link = e.target.closest('a, button, label');
+      const zone = e.target.closest('[data-cursor]');
+      if (link) { ring.classList.add('is-link'); return; }
+      if (zone) { label.textContent = zone.dataset.cursor === 'drag' ? 'Drag' : 'View'; ring.classList.add('is-label'); dot.classList.add('hide'); }
+    };
+    addEventListener('mousemove', move); document.addEventListener('mouseover', over);
+
+    // Magnetic buttons/links
+    const offs = [...document.querySelectorAll('.magnetic')].map(el => {
+      const xTo = gsap.quickTo(el, 'x', { duration: .6, ease: 'power3' }), yTo = gsap.quickTo(el, 'y', { duration: .6, ease: 'power3' });
+      const mv = e => { const r = el.getBoundingClientRect(); xTo((e.clientX - r.left - r.width / 2) * .35); yTo((e.clientY - r.top - r.height / 2) * .45); };
+      const lv = () => gsap.to(el, { x: 0, y: 0, duration: 1, ease: 'elastic.out(1, .4)' });
+      el.addEventListener('mousemove', mv); el.addEventListener('mouseleave', lv);
+      return () => { el.removeEventListener('mousemove', mv); el.removeEventListener('mouseleave', lv); gsap.set(el, { x: 0, y: 0 }); };
+    });
+
+    return () => { // leaving the desktop breakpoint
+      root.classList.remove('has-cursor', 'cursor-live');
+      removeEventListener('mousemove', move); document.removeEventListener('mouseover', over);
+      offs.forEach(off => off());
+    };
+  });
+
+  /* ---------- 2 & 7 · leaf fields (canvas, paused off-screen) ---------- */
+  function leafField(canvas, o) {
+    const ctx = canvas.getContext('2d'), P = new Path2D(LEAF_D);
+    let w = 0, h = 0, raf = 0, running = false, t = 0;
+    const size = () => { const dpr = Math.min(devicePixelRatio || 1, 2); w = canvas.offsetWidth; h = canvas.offsetHeight; canvas.width = w * dpr; canvas.height = h * dpr; ctx.setTransform(dpr, 0, 0, dpr, 0, 0); };
+    const rnd = (a, b) => a + Math.random() * (b - a);
+    const spawn = any => ({ x: rnd(0, w), y: any ? rnd(0, h) : (o.dir > 0 ? -30 : h + 30), s: rnd(o.min, o.max), v: rnd(o.vmin, o.vmax),
+      r: rnd(0, 6.28), vr: rnd(-.01, .01), ph: rnd(0, 6.28), amp: rnd(.3, 1), a: rnd(o.amin, o.amax), c: o.colors[Math.random() * o.colors.length | 0] });
+    size(); const leaves = Array.from({ length: o.count }, () => spawn(true));
+    addEventListener('resize', size);
+    const frame = () => {
+      t += .016; ctx.clearRect(0, 0, w, h);
+      for (const L of leaves) {
+        L.y += L.v * o.dir; L.x += Math.sin(t * 1.1 + L.ph) * L.amp * .5; L.r += L.vr + Math.sin(t + L.ph) * .004;
+        if (o.dir > 0 ? L.y > h + 30 : L.y < -30) Object.assign(L, spawn(false));
+        const a = o.fadeTop ? L.a * Math.max(0, Math.min(1, L.y / (h * .7))) : L.a;
+        const k = L.s / 176;
+        ctx.save(); ctx.globalAlpha = a; ctx.translate(L.x, L.y); ctx.rotate(L.r); ctx.scale(k, k); ctx.translate(-50, -88);
+        ctx.fillStyle = L.c; ctx.fill(P); ctx.restore();
+      }
+      raf = requestAnimationFrame(frame);
+    };
+    new IntersectionObserver(([en]) => {
+      if (en.isIntersecting && !running) { running = true; frame(); }
+      else if (!en.isIntersecting && running) { running = false; cancelAnimationFrame(raf); }
+    }).observe(o.observe);
+  }
+  const GREENS = ['#a4c95f', '#8fae52', '#c3dd8a', '#6d8c35'];
+  leafField(document.getElementById('leafFall'), { observe: document.getElementById('hero'), dir: 1, count: innerWidth < 768 ? 9 : 18,
+    min: 14, max: 30, vmin: .25, vmax: .6, amin: .22, amax: .5, colors: GREENS });
+  leafField(document.getElementById('steamLeaves'), { observe: document.getElementById('philosophy'), dir: -1, count: 12,
+    min: 16, max: 36, vmin: .15, vmax: .35, amin: .12, amax: .3, fadeTop: true, colors: [...GREENS, '#e6f2cc'] });
+
+  /* ---------- 1 & 9 · ONE travelling leaf: flies between perches on the content, then becomes the cup ----------
+     A single fixed element. Its position is always computed between two LIVE anchors (where it last perched,
+     where it is heading), so while perched it rides along with the content, and every flight starts exactly
+     where the previous one landed — no second leaf, no fade swap, no teleport. */
+  (function journey() {
+    const leaf = document.getElementById('travelingLeaf');
+    const stage = document.getElementById('cupStage');
+    const sLeaf = stage.querySelector('.stage-leaf'), sCup = stage.querySelector('.stage-cup'), steam = [...stage.querySelectorAll('.steam')];
+    const kicker = document.querySelector('#journey [data-scrub-words]');
+    const bihar = () => [...kicker.querySelectorAll('.accent .wi')].pop() || kicker;   // "…Bihar" — last word of the accent
+    const chaiChun = document.querySelector('#portfolio [data-clip="left"]');          // first brand image
+    const marquee = document.querySelector('#units .marquee');                          // brand-logo marquee row
+    const portrait = document.getElementById('heroPortrait');                            // hero perch: portrait's top-right corner
+    const connection = () => [...document.querySelectorAll('#philoSheen .wi')].pop() || document.getElementById('philoSheen'); // "…connection"
+    const pressCard = document.querySelector('#pressTrack [data-press]');                // first press card
+    const nav = document.getElementById('nav');
+    const LW = 22, LH = 38, GLYPH = 100 / 176;
+    const W = () => innerWidth, H = () => innerHeight;
+
+    // Anchors: where the leaf's centre sits (viewport px), its resting angle and scale — read fresh every frame
+    const ANCHORS = [
+      () => { const b = portrait.getBoundingClientRect(); return { x: b.right - 16, y: b.top + 2, r: 38, s: 1.1 }; }, // hero: top-right of the portrait, clear of #heroLeaf
+      () => { const b = bihar().getBoundingClientRect(); return { x: b.right - 8, y: b.top + 2, r: -34, s: 1.1 }; },
+      () => { const b = chaiChun.getBoundingClientRect(); return { x: b.right - 28, y: b.top - 3, r: 66, s: 1.1 }; },
+      () => { const b = marquee.getBoundingClientRect(); return { x: b.left + b.width * .38, y: b.bottom + 10, r: 35, s: .75 }; },
+      () => { const b = connection().getBoundingClientRect(); return { x: b.right - 6, y: b.top + 4, r: -28, s: 1.1 }; },
+      () => { const b = pressCard.getBoundingClientRect(); return { x: b.left + 20, y: b.top - 2, r: -62, s: 1.1 }; },
+      () => { const b = sLeaf.getBoundingClientRect(), h = Math.min(b.height, b.width / GLYPH);         // the stage's leaf glyph
+              return { x: b.left + b.width / 2, y: b.top + b.height / 2, r: 0, s: h / LH }; }
+    ];
+
+    // One ScrollTrigger per section-to-section flight. arc = control-point offset (fraction of viewport),
+    // turns = full rotations (sign alternates, so each lift-off spins the opposite way to the last landing).
+    const FLIGHTS = [
+      { trigger: '#journey', start: 'top 100%', end: 'top 20%',                         turns:  2.25, arc: [-.30, .16], flutter: 70 },
+      { trigger: kicker,     start: 'top 32%', endTrigger: chaiChun, end: 'top 42%',    turns: -1.5,  arc: [ .32, 0 ],  flutter: 90 },
+      { trigger: chaiChun,   start: 'top 26%', endTrigger: marquee,  end: 'top 58%',    turns:  1.75, arc: [-.28, 0 ],  flutter: 90 },
+      { trigger: marquee,    start: 'top 30%', endTrigger: '#philoQuote', end: 'top 55%', turns: -1.5, arc: [ .30, 0 ],  flutter: 100 },
+      { trigger: '#philoQuote', start: 'top 28%', endTrigger: pressCard, end: 'top 55%', turns:  1.25, arc: [-.26, 0 ],  flutter: 90 },
+      { trigger: pressCard,  start: 'top 28%', endTrigger: stage,    end: 'top 60%',    turns: -1.0,  arc: [ .28, 0 ],  flutter: 110 }
+    ];
+    const LAST = FLIGHTS.length - 1;
+    const settle = { y: 0, r: 0 };
+    const land = () => gsap.fromTo(settle, { y: -18, r: 26 }, { y: 0, r: 0, duration: .9, ease: 'back.out(3)', overwrite: true });
+
+    // Leaf → cup: crossfade + matched scale/rotation, overlapping ~0.35s (no MorphSVG)
+    gsap.set(sCup, { opacity: 0, scale: .6, rotation: -14, transformOrigin: '50% 60%' });
+    gsap.set(sLeaf, { transformOrigin: '50% 60%' });
+    primeDraw(steam);
+    const stageColor = getComputedStyle(sLeaf).color;
+    let arrived = false, arrival = null;
+    function arrive() { // the travelling leaf is now exactly on the stage leaf: swap once, then brew the cup
+      if (arrived) return; arrived = true;
+      arrival && arrival.kill();
+      gsap.set(sLeaf, { opacity: 1, scale: 1, rotation: 0 });
+      arrival = gsap.timeline()
+        .to(sLeaf, { scale: .5, rotation: 30, opacity: 0, duration: .75, ease: 'power2.in' }, .35)
+        .to(sCup, { scale: 1, rotation: 0, opacity: 1, duration: .9, ease: 'back.out(1.6)' }, '-=.38')
+        .to(steam, { strokeDashoffset: 0, duration: .9, ease: 'power2.out', stagger: .12 }, '-=.35');
+    }
+    function depart() { // scrolled back up: the cup un-brews and the same leaf takes off again
+      if (!arrived) return; arrived = false;
+      arrival && arrival.kill();
+      gsap.set(sLeaf, { opacity: 0, scale: 1, rotation: 0 }); gsap.set(sCup, { opacity: 0, scale: .6, rotation: -14 });
+      primeDraw(steam);
+    }
+
+    FLIGHTS.forEach((f, i) => {
+      f.p = 0;
+      gsap.to(f, {
+        p: 1, ease: 'none',
+        scrollTrigger: { trigger: f.trigger, start: f.start, endTrigger: f.endTrigger, end: f.end, scrub: .9, invalidateOnRefresh: true },
+        onUpdate: () => {
+          if (f.p >= 1 && !f.landed) { f.landed = true; i === LAST ? arrive() : land(); }
+          else if (f.p < 1 && f.landed) { f.landed = false; if (i === LAST) depart(); }
+        }
+      });
+    });
+
+    { const h = ANCHORS[0](); gsap.set(leaf, { x: h.x - LW / 2, y: h.y - LH / 2, rotation: h.r, scale: h.s, visibility: 'visible' }); }
+
+    const path = gsap.parseEase('sine.inOut'), mix = gsap.utils.interpolate;
+    gsap.ticker.add(() => {
+      if (arrived) { leaf.style.visibility = 'hidden'; return; }          // it has become the cup
+      leaf.style.visibility = 'visible';
+      let k = -1;
+      for (let i = 0; i < FLIGHTS.length; i++) if (FLIGHTS[i].p > 0) k = i;
+
+      // Before the first flight, "flight -1" is simply perched at the hero anchor
+      const f = k < 0 ? { p: 1 } : FLIGHTS[k], p = f.p, a = k < 0 ? null : ANCHORS[k](), b = ANCHORS[k + 1]();
+      let x = b.x, y = b.y, r = b.r, sc = b.s, o = 1, color = k === LAST ? stageColor : '#8fae52';
+      if (p < 1) { // in flight: quadratic arc between the two live anchors, plus a side-to-side tumble
+        const e = path(p), u = 1 - e, lift = Math.sin(Math.PI * e);
+        const cx = (a.x + b.x) / 2 + f.arc[0] * W(), cy = (a.y + b.y) / 2 + f.arc[1] * H();
+        x = u * u * a.x + 2 * u * e * cx + e * e * b.x + Math.sin(e * Math.PI * 3) * f.flutter * lift;
+        y = u * u * a.y + 2 * u * e * cy + e * e * b.y + Math.sin(e * Math.PI * 2) * 24 * lift;
+        r = a.r + (b.r - a.r + f.turns * 360) * e;
+        sc = (a.s + (b.s - a.s) * e) * (1 + .35 * lift);                 // "closer to camera" mid-flight
+        if (k === LAST) color = mix('#8fae52', stageColor, e);             // matches the stage leaf on landing
+      }
+      // Hard safety net: the leaf can never render outside the viewport (or hide under the fixed nav)
+      const rad = Math.hypot(LW, LH) / 2 * sc + 2;                        // half-diagonal: covers any rotation, scaled
+      const padX = Math.max(LW, rad), padY = Math.max(LH, rad);
+      const top = Math.max(padY, nav.getBoundingClientRect().bottom + rad);
+      x = gsap.utils.clamp(padX, W() - padX, x);
+      y = gsap.utils.clamp(top, H() - padY, y + settle.y);
+      gsap.set(leaf, { x: x - LW / 2, y: y - LH / 2, rotation: r + settle.r, scale: sc, opacity: o, color, transformOrigin: '50% 50%' });
+    });
+  })();
+
+  addEventListener('load', () => ScrollTrigger.refresh()); // re-measure after images/fonts settle
+});
+</script>
+</body>
+</html>
